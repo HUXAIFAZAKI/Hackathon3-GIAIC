@@ -61,7 +61,7 @@ const Header: React.FC = () => {
 
       </div>
     </div>
-
+    <hr className="relative top-1 mx-auto w-[90%] h-[4px] border-[#f0f0f0] select-none" />
     </header>
   )
 }

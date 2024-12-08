@@ -11,7 +11,7 @@ const page = () => {
   const [quantity, setQuantity] = useState(1)
   return (
     <section className='bg-white'>
-        <div className='w-[80vw] mx-auto flex flex-row gap-8'>
+        <div className='w-[80vw] mx-auto pt-4 flex flex-row gap-8 bg-white'>
         <div className='flex flex-row  gap-4'>
         <div className='flex flex-row md:flex-col gap-4 '>
           <Image src={pic1} alt="pic1" width={180} height={150} className='border border-black/80 rounded-xl px-4 bg-[#f0f0f0]'></Image>
@@ -58,9 +58,14 @@ const page = () => {
         </div>
         
         
-       
-
     </div>
+    <div className='w-[80vw] mx-auto mt-10 select-none'>
+          <span className='flex justify-around items-center gap-4'>
+            <h3 className='border-b-2 text-[rgba(0,0,0,0.6)] border-black/20 hover:text-black hover:border-black cursor-pointer'>Product Details</h3>
+            <h3 className='border-b-2 border-black cursor-pointer'>Rating & Reviews</h3>
+            <h3 className='border-b-2 text-[rgba(0,0,0,0.6)] border-black/20 hover:text-black hover:border-black cursor-pointer'>FAQs</h3>
+          </span>
+        </div>
     </section>
     
     
