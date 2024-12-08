@@ -1,7 +1,6 @@
 "use client"
-import React from 'react'
+import React, {useState} from 'react'
 import { integralCF } from '@/style/fonts'
-import { useState } from 'react'
 
 import shirt1 from '@/public/Images/pic1.png'
 import shirt2 from '@/public/Images/pic2.png'
@@ -33,7 +32,7 @@ const cartData = [
   }
 ]
 
-const page = () => {
+const page: React.FC = function(){
   const [quantity, setQuantity] = useState(1);
   return (
     <section className='min-h-screen bg-white'>
