@@ -33,8 +33,8 @@ const cartData = [
   }
 ]
 
-const page : React.FC = () => {
-  const [quantity, setQuantity] = useState(1)
+const page = () => {
+  const [quantity, setQuantity] = useState(1);
   return (
     <section className='min-h-screen bg-white'>
       <div className='pt-4 mx-auto w-[80vw]'>
