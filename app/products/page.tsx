@@ -74,23 +74,23 @@ const page: React.FC = () => {
   const [quantity, setQuantity] = useState(1)
   return (
     <section className='bg-white'>
-        <div className='w-[80vw] mx-auto pt-4 flex flex-row gap-8 bg-white'>
-        <div className='flex flex-row  gap-4'>
-        <div className='flex flex-row md:flex-col gap-4 '>
-          <Image src={pic1} alt="pic1" width={180} height={150} className='border border-black/80 rounded-xl px-4 bg-[#f0f0f0]'></Image>
-          <Image src={pic2} alt="pic1" width={180} height={150} className='border border-black/20 rounded-xl px-4 bg-[#f0f0f0]'></Image>
-          <Image src={pic3} alt="pic1" width={180} height={150} className='border border-black/20 rounded-xl px-4 bg-[#f0f0f0]'></Image>
+        <div className='w-[95vw] md:w-[80vw] mx-auto pt-4 flex flex-col lg:flex-row gap-8 bg-white'>
+        <div className='flex flex-col-reverse lg:flex-row gap-4 justify-center items-center'>
+        <div className='flex flex-row lg:flex-col gap-4 justify-center'>
+          <Image src={pic1} alt="pic1" width={180} height={150} className='w-[124px] h-[124px] border border-black/80 rounded-xl px-4 bg-[#f0f0f0]'></Image>
+          <Image src={pic2} alt="pic1" width={180} height={150} className='w-[124px] h-[124px] border border-black/20 rounded-xl px-4 bg-[#f0f0f0]'></Image>
+          <Image src={pic3} alt="pic1" width={180} height={150} className='w-[124px] h-[124px] border border-black/20 rounded-xl px-4 bg-[#f0f0f0]'></Image>
          </div>
-        <Image src={pic1} alt="pic1" width={425} className='rounded-xl'></Image>
+        <Image src={pic1} alt="pic1" width={425} className='w-[475px] h-[400px] md:w-[425px] md:h-[500px] border border-black/20 rounded-xl'></Image>
         </div>
-        <div className='flex flex-col gap-4 w-[50%]'>
-          <h2 className={`${integralCF.className} text-3xl mb-6`}>One Life Graphic T shirt</h2>
+        <div className='flex flex-col  gap-2 md:gap-4 w-[88%] md:w-full lg:w-[50%] mx-4'>
+          <h2 className={`${integralCF.className} text-2xl md:text-3xl mb-6`}>One Life Graphic T shirt</h2>
           <span className='flex gap-4'>
-            <p className='font-bold text-xl'>$200</p>
-            <p className='line-through text-black/20 font-bold text-xl'>$300</p>
+            <p className='font-bold text-2xl md:text-xl'>$200</p>
+            <p className='line-through text-black/20 font-bold text-2xl md:text-xl'>$300</p>
           </span>
           <p className='text-[rgba(0,0,0,0.6)]'>This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.</p>
-          <hr className="mx-auto w-full h-[4px] border-black/20 select-none" />
+          <hr className="mx-auto w-full h-[4px] border-black/20 select-none mt-4 md:mt-0" />
           <div className='py-2'>
             <h3 className='mb-2'>Select Colors</h3>
               <div className='flex flex-row gap-4'>
@@ -99,7 +99,7 @@ const page: React.FC = () => {
                 <div className='bg-[#31344F] w-12 h-12 rounded-full cursor-pointer select-none'></div>
               </div>
             </div>
-            <hr className="mx-auto w-full h-[4px] border-black/20 select-none" />
+            <hr className="mx-auto w-full h-[4px] border-black/20 select-none mt-4 md:mt-0" />
             <div className='py-2'>
             <h3 className='mb-2'>Choose Size</h3>
               <div className='flex flex-row gap-4'>
@@ -109,9 +109,9 @@ const page: React.FC = () => {
                 <button className='bg-[#f0f0f0] px-4 py-2 rounded-3xl hover:bg-black hover:text-white'>X Large</button>
               </div>
             </div>
-            <hr className="mx-auto w-full h-[4px] border-black/20 select-none" />
+            <hr className="mx-auto w-full h-[4px] border-black/20 select-none mt-4 md:mt-0" />
             <div className='flex justify-around items-center select-none w-full'>
-              <div className='flex flex-row gap-4 justify-center items-center w-[20%] bg-[#f0f0f0] rounded-3xl'>
+              <div className='flex flex-row gap-4 justify-center items-center w-[25%] md:w-[20%] bg-[#f0f0f0] rounded-3xl'>
                 <button className='text-4xl ' onClick={() => (quantity > 1)? setQuantity(quantity - 1) : setQuantity(1)}>-</button>
                 <p className='font-bold text-xl'>{quantity}</p>
                 <button className='text-2xl' onClick={() => setQuantity(quantity + 1)}>+</button>
