@@ -9,27 +9,9 @@ import shirt2 from '@/public/Images/pic2.png'
 import shirt3 from '@/public/Images/pic3.png'
 import shirt4 from '@/public/Images/pic4.png'
 import star from '@/public/Icons/small-star.svg'
+import reviews from '@/components/Data/Reviews'
 import { integralCF } from '@/style/fonts'
 import { useState } from 'react'
-
-
-const reviews = [
-  {
-    name:"Sarah M",
-    review:`""I'm blown away by the quality and style of the clothes I received from Shop.co. From casual wear to elegant dresses, every piece I've bought has exceeded my expectations.”"`,
-    stars:5
-  },
-  {
-    name:"Alex K.",
-    review:`"Finding clothes that align with my personal style used to be a challenge until I discovered Shop.co. The range of options they offer is truly remarkable, catering to a variety of tastes and occasions.”`,
-    stars:4
-  },
-  {
-    name:"James L.",
-    review:`"As someone who's always on the lookout for unique fashion pieces, I'm thrilled to have stumbled upon Shop.co. The selection of clothes is not only diverse but also on-point with the latest trends.”`,
-    stars:5,
-  },
-]
 
 type Products = {
   name: string

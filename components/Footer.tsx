@@ -1,38 +1,9 @@
 import React from 'react'
 import Link from 'next/link';
 import NewsLetter from './NewsLetter';
-import { FaFacebookF, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
 import { integralCF } from '@/style/fonts'
+import socialsData from './Data/SocialsData';
 
-
-type SocialNetworks = {
-  id: number;
-  icon: React.ReactNode;
-  url: string;
-};
-
-const socialsData: SocialNetworks[] = [
-  {
-    id: 1,
-    icon: <FaTwitter />,
-    url: "https://twitter.com",
-  },
-  {
-    id: 2,
-    icon: <FaFacebookF />,
-    url: "https://facebook.com",
-  },
-  {
-    id: 3,
-    icon: <FaInstagram />,
-    url: "https://instagram.com",
-  },
-  {
-    id: 4,
-    icon: <FaGithub />,
-    url: "https://github.com/Nimrahjawaid03",
-  },
-];
 
 const Footer: React.FC = () => {
   return (
@@ -48,7 +19,7 @@ const Footer: React.FC = () => {
           <div className='flex items-start'>
           {socialsData.map((social) => (
             <Link href={social.url} key={social.id}
-            className="bg-white hover:bg-black hover:text-white transition-all
+            className="bg-white hover:text-white hover:bg-black  transition-all
             duration-200 mr-3 w-10 h-10 rounded-full border border-black/20 flex items-center justify-center p-1.5">{social.icon}</Link>
           ))}
           </div>

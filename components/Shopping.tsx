@@ -3,88 +3,10 @@ import style1 from '../public/Images/dress-style-1.png'
 import style2 from '../public/Images/dress-style-2.png'
 import style3 from '../public/Images/dress-style-3.png'
 import style4 from '../public/Images/dress-style-4.png'
-import shirt1 from '@/public/Images/pic1.png'
-import shirt2 from '@/public/Images/pic2.png'
-import shirt3 from '@/public/Images/pic3.png'
-import shirt4 from '@/public/Images/pic4.png'
-import shirt5 from '@/public/Images/pic5.png'
-import shirt6 from '@/public/Images/pic6.png'
-import shirt7 from '@/public/Images/pic7.png'
-import shirt8 from '@/public/Images/pic8.png'
+import {NewProducts, TopProducts} from './Data/Products'
 import star from '../public/Icons/small-star.svg'
 import Image from 'next/image'
 import { integralCF } from '@/style/fonts'
-
-type Products = {
-  name: string
-  image: string | any
-  price: number
-  discountprice: number
-  rating: number
-}
-
-const NewProducts: Products[] = [
-  {
-    name: "T-SHIRT WITH TAPE DETAILS",
-    image: shirt1,
-    price: 200,
-    discountprice: 100,
-    rating: 4,
-  },
-  {
-    name: "SKINNY FIT JEANS",
-    image: shirt2,
-    price: 200,
-    discountprice: 100,
-    rating: 3,
-  },
-  {
-    name: "CHECKERED SHIRT",
-    image: shirt3,
-    price: 200,
-    discountprice: 100,
-    rating: 5,
-  },
-  {
-    name: "SLEEVE STRIPED T-SHIRT",
-    image: shirt4,
-    price: 200,
-    discountprice: 100,
-    rating: 4,
-  },
-]
-
-const TopProducts:Products[] = [
-  {
-    name: "VERTICAL STRIPED SHIRT",
-    image: shirt5,
-    price: 200,
-    discountprice: 100,
-    rating: 4,
-  },
-  {
-    name: "COURAGE GRAPHIC T-SHIRT",
-    image: shirt6,
-    price: 200,
-    discountprice: 100,
-    rating: 3,
-  },
-  {
-    name: "LOOSE FIT BERMUDA SHORTS",
-    image: shirt7,
-    price: 200,
-    discountprice: 100,
-    rating: 5,
-  },
-  {
-    name: "FADED SKINNY JEANS",
-    image: shirt8,
-    price: 200,
-    discountprice: 100,
-    rating:4
-  },
-
-]
 
 const Shopping: React.FC = () => {
   return (
