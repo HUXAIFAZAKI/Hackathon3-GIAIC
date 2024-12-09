@@ -30,8 +30,8 @@ const Header: React.FC = () => {
       <ul className='hidden md:flex style-none gap-4'>
         <Link href='/products' className='cursor-pointer hover:border-b border-black transition-all duration-100'>Shop</Link>
         <li className='cursor-pointer hover:border-b border-black transition-all duration-100'>On Sale</li>
-        <li className='cursor-pointer hover:border-b border-black transition-all duration-100'>New Arrivals</li>
-        <li className='cursor-pointer hover:border-b border-black transition-all duration-100'>Brands</li>
+        <li className='cursor-pointer hover:border-b border-black transition-all duration-100'><a href="#newArrival">New Arrivals</a></li>
+        <li className='cursor-pointer hover:border-b border-black transition-all duration-100'><a href="#brands">Brands</a></li>
       </ul>
       <div 
       className='hidden md:flex justify-start items-center h-[40px] min-w-[200px] w-[30%] border-l-4 border-r-4 rounded-full bg-[#f0f0f0]'> 

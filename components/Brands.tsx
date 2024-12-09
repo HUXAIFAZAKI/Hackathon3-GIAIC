@@ -9,7 +9,7 @@ import calvinKlein from "../public/Icons/calvinKlein.svg"
 
 const Brands: React.FC = () => {
   return (
-    <div className='bg-black flex flex-wrap gap-4 items-center justify-evenly p-4 md:p-8'>
+    <div className='bg-black flex flex-wrap gap-4 items-center justify-evenly p-4 md:p-8' id='brands'>
       <Image src={versace} alt="versace" height={125} width={125}></Image>
       <Image src={zara} alt="zara" height={80} width={80}></Image>
       <Image src={gucci} alt="gucci" height={125} width={125}></Image>

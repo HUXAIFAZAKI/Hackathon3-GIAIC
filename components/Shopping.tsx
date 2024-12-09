@@ -13,7 +13,7 @@ const Shopping: React.FC = () => {
   return (
     <div className='bg-white'>
       <div className='flex flex-col justify-center items-center w-screen py-12'>
-        <h2 className={`${integralCF.className} text-3xl mb-6`}>New Arrivals</h2>
+        <h2 className={`${integralCF.className} text-3xl mb-6`} id="newArrival">New Arrivals</h2>
         <div className='flex flex-row justify-center items-start w-[75%] rounded-full p-6 gap-4'>
           {NewProducts.map((product) => (
             <div className='flex flex-col justify-center items-start'>
