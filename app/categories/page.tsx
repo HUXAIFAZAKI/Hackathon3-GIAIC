@@ -6,10 +6,7 @@ import star from '@/public/Icons/small-star.svg'
 import LArrow from '@/public/Icons/arrowLeft.svg'
 import RArrow from '@/public/Icons/arrowRight.svg'
 
-
-
 const products = [...NewProducts,...TopProducts]
-
 
 const page: React.FC = () => {
   
@@ -47,14 +44,14 @@ const page: React.FC = () => {
           <button className='bg-black text-white py-3 px-4 rounded-full'>Apply Filter</button>
       </div>
       <div className='w-full'>
-        <div className='text-[rgba(0,0,0,0.6)] flex gap-2 md:gap-0 md:justify-between items-baseline md:items-center mb-4 w-[90%] mx-auto'>
+        <div className='text-[rgba(0,0,0,0.6)] flex gap-2 md:gap-0 justify-around md:justify-between items-center md:items-center mb-4 w-[90%] mx-auto'>
           <h2 className='font-bold text-3xl md:text-4xl text-bold text-black'>Casuals</h2>
-          <span className='flex flex-row justify-between'>
+          <span className='flex flex-row justify-between items-center '>
             <p>Showing 1-10 of 100 Products &nbsp;</p>
             <span className='hidden md:flex flex-row'>Sort by:&nbsp;
               <p className='font-bold text-black'>Most Popular</p>
             </span>
-            <Image src={filters} alt='filters' className='relative left-2 bottom-1 md:hidden cursor-pointer w-[30px] bg-[#f0f0f0] rounded-full p-2'></Image>
+            <Image src={filters} alt='filters' className='relative md:hidden cursor-pointer w-[35px] bg-[#f0f0f0] rounded-full p-2'></Image>
           </span>
         </div>
         <div className='grid grid-col-2 md:grid-cols-3 gap-y-4 gap-x-0 place-items-center grid-col-'>
