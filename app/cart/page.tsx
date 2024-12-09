@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, {useState} from 'react'
 import { integralCF } from '@/style/fonts'
 
 import shirt1 from '@/public/Images/pic1.png'
@@ -14,7 +14,7 @@ const cartData = [
     size:"M",
     color:"BLACK",
     price:"$145",
-    img: shirt1
+    img: shirt1,
   },
   {
     name:"CHECKERED SHIRT",
@@ -33,7 +33,7 @@ const cartData = [
 ]
 
 const page: React.FC = function(){
-  // const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(1);
   return (
     <section className='min-h-screen bg-white'>
       <div className='pt-4 mx-auto w-[80vw]'>
@@ -53,9 +53,9 @@ const page: React.FC = function(){
                   <span className='flex flex-row justify-between items-center '>
                   <p className='text-[rgba(0,0,0,0.8)] font-bold text-xl'>{item.price}</p>
                   <div className='flex flex-row gap-4 justify-center items-center w-[50%] md:w-[30%] bg-[#f0f0f0] rounded-3xl'>
-                  {/* <button className='text-4xl ' onClick={() => (quantity > 1)? setQuantity(quantity - 1) : setQuantity (1)}>-</button> */}
-                  <p className='font-bold text-xl'>1</p>
-                  {/* <button className='text-2xl' onClick={() => setQuantity(quantity + 1)}>+</button> */}
+                  <button className='text-4xl ' onClick={() => (quantity > 1)? setQuantity(quantity - 1) : setQuantity (1)}>-</button>
+                  <p className='font-bold text-xl'>{quantity}</p>
+                  <button className='text-2xl' onClick={() => setQuantity(quantity + 1)}>+</button>
                 </div>
                   </span>        
               </div>
