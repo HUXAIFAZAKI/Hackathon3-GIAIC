@@ -5,6 +5,7 @@ import filters from '@/public/Icons/filters.svg'
 import star from '@/public/Icons/small-star.svg'
 import LArrow from '@/public/Icons/arrowLeft.svg'
 import RArrow from '@/public/Icons/arrowRight.svg'
+import navArrow from '@/public/Icons/navArrow.svg'
 
 const products = [...NewProducts,...TopProducts]
 
@@ -16,11 +17,26 @@ const page: React.FC = () => {
           <h2 className='font-bold text-2xl'>Filters</h2>
           <hr className="relative top-1 mx-auto w-[90%] h-[4px] border-[#f0f0f0] select-none" />
           <div>
+            <span className='flex justify-between items-center'>
             <p>T-Shirts</p>
+            <Image src={navArrow} alt='arrow' className='w-2'></Image>
+            </span>
+            <span className='flex justify-between items-center'>
             <p>Shirts</p>
+            <Image src={navArrow} alt='arrow' className='w-2'></Image>
+            </span>
+            <span className='flex justify-between items-center'>
             <p>Jeans</p>
-            <p>Hoodie</p>
+            <Image src={navArrow} alt='arrow' className='w-2'></Image>
+            </span>
+            <span className='flex justify-between items-center'>
+            <p>Hoodies</p>
+            <Image src={navArrow} alt='arrow' className='w-2'></Image>
+            </span>
+            <span className='flex justify-between items-center'>
             <p>Jackets</p>
+            <Image src={navArrow} alt='arrow' className='w-2'></Image>
+            </span>
           </div>
           <hr className="relative top-1 mx-auto w-[90%] h-[4px] border-[#f0f0f0] select-none" />
           <div>
@@ -31,14 +47,52 @@ const page: React.FC = () => {
           <hr className="relative top-1 mx-auto w-[90%] h-[4px] border-[#f0f0f0] select-none" />
           <div>
             <h3 className='font-bold text-xl'>Colors</h3>
+            <div className='flex gap-2 flex-wrap'>
+                <div className='bg-red-500 w-8 h-8 rounded-full cursor-pointer select-none'></div>
+                <div className='bg-green-500 w-8 h-8 rounded-full cursor-pointer select-none'></div>
+                <div className='bg-blue-500 w-8 h-8 rounded-full cursor-pointer select-none'></div>
+                <div className='bg-yellow-500 w-8 h-8 rounded-full cursor-pointer select-none'></div>
+                <div className='bg-orange-500 w-8 h-8 rounded-full cursor-pointer select-none'></div>
+                <div className='bg-black w-8 h-8 rounded-full cursor-pointer select-none'></div>
+                <div className='bg-violet-500 w-8 h-8 rounded-full cursor-pointer select-none'></div>
+                <div className='bg-blue-500 w-8 h-8 rounded-full cursor-pointer select-none'></div>
+                <div className='bg-pink-500 w-8 h-8 rounded-full cursor-pointer select-none'></div>
+                <div className='bg-slate-500 w-8 h-8 rounded-full cursor-pointer select-none'></div>
+            </div>
           </div>
           <hr className="relative top-1 mx-auto w-[90%] h-[4px] border-[#f0f0f0] select-none" />
           <div>
             <h3 className='font-bold text-xl'>Sizes</h3>
+            <div className='flex flex-row flex-wrap gap-4'>
+                <button className='bg-black text-white px-4 py-1 rounded-3xl'>Large</button>
+                <button className='bg-[#f0f0f0] px-4 py-1 rounded-3xl hover:bg-black hover:text-white'>X Large</button>
+                <button className='bg-[#f0f0f0] px-4 py-1 rounded-3xl hover:bg-black hover:text-white ' >Medium</button>
+                <button className='bg-[#f0f0f0] px-4 py-1 rounded-3xl hover:bg-black hover:text-white'>Small</button>
+              </div>
           </div>
           <hr className="relative top-1 mx-auto w-[90%] h-[4px] border-[#f0f0f0] select-none" />
           <div>
             <h3 className='font-bold text-xl'>Dress Style</h3>
+            <span className='flex justify-between items-center'>
+            <p>T-Shirts</p>
+            <Image src={navArrow} alt='arrow' className='w-2'></Image>
+            </span>
+            <span className='flex justify-between items-center'>
+            <p>Casual</p>
+            <Image src={navArrow} alt='arrow' className='w-2'></Image>
+            </span>
+            <span className='flex justify-between items-center'>
+            <p>Formal</p>
+            <Image src={navArrow} alt='arrow' className='w-2'></Image>
+            </span>
+            <span className='flex justify-between items-center'>
+            <p>Party</p>
+            <Image src={navArrow} alt='arrow' className='w-2'></Image>
+            </span>
+            <span className='flex justify-between items-center'>
+            <p>Gym</p>
+            <Image src={navArrow} alt='arrow' className='w-2'></Image>
+            </span>
           </div>
           
           <button className='bg-black text-white py-3 px-4 rounded-full'>Apply Filter</button>
