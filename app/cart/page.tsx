@@ -52,10 +52,10 @@ const page: React.FC = function(){
                   <p className='text-[rgba(0,0,0,0.8)]'>Color: {item.color}</p>
                   <span className='flex flex-row justify-between items-center '>
                   <p className='text-[rgba(0,0,0,0.8)] font-bold text-xl'>{item.price}</p>
-                  <div className='flex flex-row gap-4 justify-center items-center w-[50%] md:w-[30%] bg-[#f0f0f0] rounded-3xl'>
-                  <button className='text-4xl ' onClick={() => (quantity > 1)? setQuantity(quantity - 1) : setQuantity (1)}>-</button>
-                  <p className='font-bold text-xl'>{quantity}</p>
-                  <button className='text-2xl' onClick={() => setQuantity(quantity + 1)}>+</button>
+                  <div className='flex flex-row gap-4 justify-center items-center w-[55%] md:w-[30%] lg:w-[15%] bg-[#f0f0f0] rounded-3xl'>
+                  <button className='text-2xl md:text-4xl relative bottom-2 md:bottom-3' onClick={() => (quantity > 1)? setQuantity(quantity - 1) : setQuantity (1)}>_</button>
+                  <p className='font-bold text-lg md:text-xl'>{quantity}</p>
+                  <button className='text-xl md:text-2xl' onClick={() => setQuantity(quantity + 1)}>+</button>
                 </div>
                   </span>        
               </div>
