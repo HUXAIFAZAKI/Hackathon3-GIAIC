@@ -1,5 +1,5 @@
 "use client"
-import React, {useState} from 'react'
+import React from 'react'
 import { integralCF } from '@/style/fonts'
 
 import shirt1 from '@/public/Images/pic1.png'

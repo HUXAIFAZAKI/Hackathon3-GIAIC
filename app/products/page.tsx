@@ -70,7 +70,7 @@ const NewProducts: Products[] = [
   },
 ]
 
-const page = () => {
+const page: React.FC = () => {
   const [quantity, setQuantity] = useState(1)
   return (
     <section className='bg-white'>
