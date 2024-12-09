@@ -27,7 +27,7 @@ const Header: React.FC = () => {
       <h1 className={`${integralCF.className} font-bold text-4xl h-[50px]`}>
         <Link href={'/'}>SHOP.CO</Link>
       </h1>
-      <ul className='hidden md:flex style-none gap-4'>
+      <ul className='hidden md:flex style-none gap-4 select-none'>
         <Link href='/products' className='cursor-pointer hover:border-b border-black transition-all duration-100'>Shop</Link>
         <li className='cursor-pointer hover:border-b border-black transition-all duration-100'>On Sale</li>
         <li className='cursor-pointer hover:border-b border-black transition-all duration-100'><a href="#newArrival">New Arrivals</a></li>

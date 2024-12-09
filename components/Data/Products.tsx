@@ -19,7 +19,7 @@ export const NewProducts: Products[] = [
   {
     name: "T-SHIRT WITH TAPE DETAILS",
     image: shirt1,
-    price: 200,
+    price: 120,
     discountprice: 100,
     rating: 4,
   },
@@ -33,15 +33,15 @@ export const NewProducts: Products[] = [
   {
     name: "CHECKERED SHIRT",
     image: shirt3,
-    price: 200,
+    price: 150,
     discountprice: 100,
     rating: 5,
   },
   {
     name: "SLEEVE STRIPED T-SHIRT",
     image: shirt4,
-    price: 200,
-    discountprice: 100,
+    price: 250,
+    discountprice: 200,
     rating: 4,
   },
 ]
@@ -50,29 +50,29 @@ export const TopProducts:Products[] = [
   {
     name: "VERTICAL STRIPED SHIRT",
     image: shirt5,
-    price: 200,
-    discountprice: 100,
+    price: 280,
+    discountprice: 250,
     rating: 4,
   },
   {
     name: "COURAGE GRAPHIC T-SHIRT",
     image: shirt6,
-    price: 200,
-    discountprice: 100,
+    price: 220,
+    discountprice: 200,
     rating: 3,
   },
   {
     name: "LOOSE FIT BERMUDA SHORTS",
     image: shirt7,
-    price: 200,
-    discountprice: 100,
+    price: 180,
+    discountprice: 150,
     rating: 5,
   },
   {
     name: "FADED SKINNY JEANS",
     image: shirt8,
-    price: 200,
-    discountprice: 100,
+    price: 130,
+    discountprice: 120,
     rating:4
   },
 
