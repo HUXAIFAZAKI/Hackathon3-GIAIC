@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+// Images
 import versace from "../public/Icons/versace.svg"
 import zara from "../public/Icons/zara.svg"
 import gucci from "../public/Icons/gucci.svg"

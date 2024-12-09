@@ -63,11 +63,11 @@ const Shopping: React.FC = () => {
               <p className='relative top-10 left-5 font-bold text-2xl pt-4'>Formal</p>
               <Image src={style2} alt="style2" width={500} className='cursor-pointer hover:shadow-2xl rounded-xl'/>
             </div>
-            <div className='w-[300px] md:w-[500px] '>
+            <div className='relative bottom-10 w-[300px] md:w-[500px] '>
               <p className='relative top-10 left-5 font-bold text-2xl pt-4'>Party</p>
-              <Image src={style3} alt="style3" width={500} className='cursor-pointer hover:shadow-2xl rounded-xl'/>
+              <Image src={style3} alt="style3" width={500} className='cursor-pointer hover:border-2 rounded-xl'/>
             </div>
-            <div className='w-[280px] '>
+            <div className='relative bottom-10 w-[280px]'>
               <p className='relative top-10 left-5 font-bold text-2xl pt-4'>Wedding</p>
               <Image src={style4} alt="style4" width={300}className='cursor-pointer hover:shadow-2xl rounded-xl'/>
             </div>

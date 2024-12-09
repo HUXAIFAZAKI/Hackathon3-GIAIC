@@ -1,10 +1,12 @@
 import React from 'react'
 import Image from 'next/image'
+import { integralCF } from '@/style/fonts'
+// Images
 import rArrow from '../public/Icons/arrowRight.svg'
 import lArrow from '../public/Icons/arrowLeft.svg'
 import star from '../public/Icons/small-star.svg'
 import reviews from './Data/Reviews'
-import { integralCF } from '@/style/fonts'
+
 
 const Customers : React.FC = () => {
   return (
