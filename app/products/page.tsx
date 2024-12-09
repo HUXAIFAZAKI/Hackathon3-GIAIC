@@ -13,17 +13,14 @@ import { useState } from 'react'
 
 const page: React.FC = () => {
   const [quantity, setQuantity] = useState(1)
-  function ShowImage (e){
-    // console.log(e.target.src)
-  }
   return (
     <section className='bg-white'>
         <div className='w-[95vw] md:w-[80vw] mx-auto pt-4 flex flex-col lg:flex-row gap-8 bg-white'>
         <div className='flex flex-col-reverse lg:flex-row gap-4 justify-center items-center'>
         <div className='flex flex-row lg:flex-col gap-4 justify-center'>
-          <Image src={pic1} alt="pic1" width={180} height={150} className='w-[124px] h-[124px] border border-black/80 rounded-xl px-4 bg-[#f0f0f0] cursor-pointer' onClick={ShowImage}></Image>
-          <Image src={pic2} alt="pic1" width={180} height={150} className='w-[124px] h-[124px] border border-black/20 rounded-xl px-4 bg-[#f0f0f0] cursor-pointer' onClick={ShowImage}></Image>
-          <Image src={pic3} alt="pic1" width={180} height={150} className='w-[124px] h-[124px] border border-black/20 rounded-xl px-4 bg-[#f0f0f0] cursor-pointer' onClick={ShowImage}></Image>
+          <Image src={pic1} alt="pic1" width={180} height={150} className='w-[124px] h-[124px] border border-black/80 rounded-xl px-4 bg-[#f0f0f0] cursor-pointer' ></Image>
+          <Image src={pic2} alt="pic1" width={180} height={150} className='w-[124px] h-[124px] border border-black/20 rounded-xl px-4 bg-[#f0f0f0] cursor-pointer' ></Image>
+          <Image src={pic3} alt="pic1" width={180} height={150} className='w-[124px] h-[124px] border border-black/20 rounded-xl px-4 bg-[#f0f0f0] cursor-pointer' ></Image>
          </div>
         <Image src={pic1} alt="pic1" width={425} className=' w-[475px] h-[400px] md:w-[425px] md:h-[500px] border border-black/20 rounded-xl' id="selectedIMG"></Image>
         </div>
