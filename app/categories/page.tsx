@@ -121,7 +121,7 @@ const page: React.FC = () => {
             </div>
           ))}
         </div>
-        <hr className="my-4 mx-auto w-full h-[5px] border-[#f0f0f0] border-[1.75px] select-none" />
+        <hr className="my-4 mx-auto w-full h-[5px] border-[#f0f0f0] bg-[#f0f0f0] border-[1.75px] select-none" />
         <div className='flex flex-row justify-between w-[90%] mx-auto'>
           <button className='border-black/20 border rounded-xl py-2 px-4  flex justify-center items-center gap-4'>
             <Image src={LArrow} alt='arrow'></Image>
