@@ -7,7 +7,7 @@ import socialsData from './Data/SocialsData';
 
 const Footer: React.FC = () => {
   return (
-    <footer>
+    <footer className='bg-[#f0f0f0]'>
       <div className='bg-white'>
         <NewsLetter />
       </div>
