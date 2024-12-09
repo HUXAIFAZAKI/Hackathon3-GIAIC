@@ -4,66 +4,28 @@ import Image from 'next/image'
 import pic1 from '@/public/Images/pic9.png'
 import pic2 from '@/public/Images/pic10.png'
 import pic3 from '@/public/Images/pic11.png'
-import shirt1 from '@/public/Images/pic1.png'
-import shirt2 from '@/public/Images/pic2.png'
-import shirt3 from '@/public/Images/pic3.png'
-import shirt4 from '@/public/Images/pic4.png'
+import { NewProducts } from '@/components/Data/Products'
 import star from '@/public/Icons/small-star.svg'
 import reviews from '@/components/Data/Reviews'
 import { integralCF } from '@/style/fonts'
 import { useState } from 'react'
 
-type Products = {
-  name: string
-  image: string | any
-  price: number
-  discountprice: number
-  rating: number
-}
-
-const NewProducts: Products[] = [
-  {
-    name: "T-SHIRT WITH TAPE DETAILS",
-    image: shirt1,
-    price: 200,
-    discountprice: 100,
-    rating: 4,
-  },
-  {
-    name: "SKINNY FIT JEANS",
-    image: shirt2,
-    price: 200,
-    discountprice: 100,
-    rating: 3,
-  },
-  {
-    name: "CHECKERED SHIRT",
-    image: shirt3,
-    price: 200,
-    discountprice: 100,
-    rating: 5,
-  },
-  {
-    name: "SLEEVE STRIPED T-SHIRT",
-    image: shirt4,
-    price: 200,
-    discountprice: 100,
-    rating: 4,
-  },
-]
 
 const page: React.FC = () => {
   const [quantity, setQuantity] = useState(1)
+  function ShowImage (e){
+    // console.log(e.target.src)
+  }
   return (
     <section className='bg-white'>
         <div className='w-[95vw] md:w-[80vw] mx-auto pt-4 flex flex-col lg:flex-row gap-8 bg-white'>
         <div className='flex flex-col-reverse lg:flex-row gap-4 justify-center items-center'>
         <div className='flex flex-row lg:flex-col gap-4 justify-center'>
-          <Image src={pic1} alt="pic1" width={180} height={150} className='w-[124px] h-[124px] border border-black/80 rounded-xl px-4 bg-[#f0f0f0]'></Image>
-          <Image src={pic2} alt="pic1" width={180} height={150} className='w-[124px] h-[124px] border border-black/20 rounded-xl px-4 bg-[#f0f0f0]'></Image>
-          <Image src={pic3} alt="pic1" width={180} height={150} className='w-[124px] h-[124px] border border-black/20 rounded-xl px-4 bg-[#f0f0f0]'></Image>
+          <Image src={pic1} alt="pic1" width={180} height={150} className='w-[124px] h-[124px] border border-black/80 rounded-xl px-4 bg-[#f0f0f0] cursor-pointer' onClick={ShowImage}></Image>
+          <Image src={pic2} alt="pic1" width={180} height={150} className='w-[124px] h-[124px] border border-black/20 rounded-xl px-4 bg-[#f0f0f0] cursor-pointer' onClick={ShowImage}></Image>
+          <Image src={pic3} alt="pic1" width={180} height={150} className='w-[124px] h-[124px] border border-black/20 rounded-xl px-4 bg-[#f0f0f0] cursor-pointer' onClick={ShowImage}></Image>
          </div>
-        <Image src={pic1} alt="pic1" width={425} className='w-[475px] h-[400px] md:w-[425px] md:h-[500px] border border-black/20 rounded-xl'></Image>
+        <Image src={pic1} alt="pic1" width={425} className=' w-[475px] h-[400px] md:w-[425px] md:h-[500px] border border-black/20 rounded-xl' id="selectedIMG"></Image>
         </div>
         <div className='flex flex-col  gap-2 md:gap-4 w-[88%] md:w-full lg:w-[50%] mx-4'>
           <h2 className={`${integralCF.className} text-2xl md:text-3xl mb-6`}>One Life Graphic T shirt</h2>

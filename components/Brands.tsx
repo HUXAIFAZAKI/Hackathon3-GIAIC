@@ -7,8 +7,6 @@ import prada from "../public/Icons/prada.svg"
 import calvinKlein from "../public/Icons/calvinKlein.svg"
 
 
-
-
 const Brands: React.FC = () => {
   return (
     <div className='bg-black flex flex-wrap gap-4 items-center justify-evenly p-4 md:p-8'>

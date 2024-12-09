@@ -6,6 +6,7 @@ import style4 from '../public/Images/dress-style-4.png'
 import {NewProducts, TopProducts} from './Data/Products'
 import star from '../public/Icons/small-star.svg'
 import Image from 'next/image'
+import Link from 'next/link'
 import { integralCF } from '@/style/fonts'
 
 const Shopping: React.FC = () => {
@@ -27,7 +28,9 @@ const Shopping: React.FC = () => {
             </div>
           ))}
         </div>
-        <button className='bg-white border border-black/20 px-12 py-3 rounded-full'>View All</button>
+      
+        <Link href='/categories' className='bg-white border border-black/20 px-12 py-3 rounded-full my-4 hover:bg-black hover:text-white'>View All</Link>
+       
         <hr className="mx-auto w-[90%] h-[4px] border-black/20 my-12" />
       </div>
       <div className='flex flex-col justify-center items-center w-screen'>
@@ -45,7 +48,7 @@ const Shopping: React.FC = () => {
             </div>
           ))}
         </div> 
-        <button className='bg-white border border-black/20 px-12 py-3 rounded-full'>View All</button>
+        <Link href='/categories' className='bg-white border border-black/20 px-12 py-3 rounded-full my-4 hover:bg-black hover:text-white'>View All</Link>
         <hr className="mx-auto w-[90%] h-[4px] border-black/20 my-12" /> 
       </div>
       <div className='flex justify-center items-center w-screen'>

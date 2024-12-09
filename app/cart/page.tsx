@@ -1,13 +1,11 @@
 "use client"
 import React, {useState} from 'react'
 import { integralCF } from '@/style/fonts'
-
 import shirt1 from '@/public/Images/pic1.png'
 import shirt2 from '@/public/Images/pic2.png'
 import shirt3 from '@/public/Images/pic3.png'
 import tag from '@/public/Icons/tag.svg'
 import Image from 'next/image'
-
 
 const cartData = [
   {
@@ -42,9 +40,7 @@ const page: React.FC = function(){
         <div className=' flex flex-col lg:flex-row lg:gap-4 justify-around items-center'>
         <div className='flex flex-col justify-around items-center lg:w-[60%] gap-4 border border-gray rounded-3xl mt-10'>
           {cartData.map((item) => (
-            <>
-            
-            
+            <> 
             <div className='flex justify-center items-center  w-full'>
               <Image src={item.img} alt={item.name} width={150} className='rounded-3xl px-4'/>
               <div className='flex flex-col py-4 border-b border-gray p-8 w-full'>

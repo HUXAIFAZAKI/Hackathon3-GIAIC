@@ -8,8 +8,8 @@ import { integralCF } from '@/style/fonts'
 const HeroSection: React.FC = () => {
   return (
     <>
-      <div className='flex flex-col md:flex-row items-center justify-center md:justify-around w-screen md:h-screen'>
-        <div className='flex flex-col gap-4 lg:gap-10 m-4 md:w-[25%] lg:w-[35%]'>
+      <div className='flex flex-col md:flex-row items-center justify-center md:justify-around w-screen md:h-screen bg-[#f0f0f0]'>
+        <div className='flex flex-col gap-4 lg:gap-10 m-4 md:w-[25%] lg:w-[35%]' >
           <h1 className={`${integralCF.className} font-bold text-4xl lg:text-6xl`}>FIND CLOTHES THAT MATCHES YOUR STYLE</h1>
           <p className=''>Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.</p>
           <button className='bg-black text-white py-4 px-4 rounded-full w-full lg:w-[50%]'>Shop Now</  button>
