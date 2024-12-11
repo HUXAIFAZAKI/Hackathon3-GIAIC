@@ -69,6 +69,7 @@ const page: React.FC = () => {
             <h3 className='border-b-2 border-black cursor-pointer'>Rating & Reviews</h3>
             <h3 className='border-b-2 text-[rgba(0,0,0,0.6)] border-black/20 hover:text-black hover:border-black cursor-pointer'>FAQs</h3>
           </span>
+          <div></div>
           <div className='grid grid-cols-1 md:grid-cols-3 gap-4 place-items-center w-screen p-4 bg-white'>
           {reviews.map((review) => (
             <div className='flex flex-col justify-center gap-4 px-6 py-8 bg-white border border-gray rounded-xl h-[250px] max-w-[400px]'>
