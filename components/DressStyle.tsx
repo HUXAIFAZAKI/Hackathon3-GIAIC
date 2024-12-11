@@ -16,8 +16,8 @@ function DressStyle() {
         </div>
         <div className='flex flex-col justify-center sm:flex-row md:h-[250px] space-y-5 sm:space-y-0 sm:space-x-5'>
             <Link href={'/'} className={`w-full md:h-full rounded-[20px] bg-white bg-top text-2xl md:text-4xl font-bold text-left py-4 md:py-[25px] px-6 md:px-9 bg-no-repeat bg-cover
-             md:max-w-[650px] h-[150px] bg-[url('/images/dress-style-3.png')] border border-[#f0f0f0] hover:border-gray-500`}>Party</Link>
-            <Link href={'/'} className={`w-full md:h-full rounded-[20px] bg-white bg-top text-2xl md:text-4xl font-bold text-left py-4 md:py-[25px] px-6 md:px-9 bg-no-repeat bg-cover md:max-w-[200px] lg:max-w-[300px] xl:max-w-[400px] h-[150px] bg-[url('/images/dress-style-4.png')] border border-[#f0f0f0] hover:border-gray-500`}>Wedding</Link>
+             md:max-w-[650px] h-[150px] bg-[url('/Images/dress-style-3.png')] border border-[#f0f0f0] hover:border-gray-500`}>Party</Link>
+            <Link href={'/'} className={`w-full md:h-full rounded-[20px] bg-white bg-top text-2xl md:text-4xl font-bold text-left py-4 md:py-[25px] px-6 md:px-9 bg-no-repeat bg-cover md:max-w-[200px] lg:max-w-[300px] xl:max-w-[400px] h-[150px] bg-[url('/Images/dress-style-4.png')] border border-[#f0f0f0] hover:border-gray-500`}>Wedding</Link>
         </div>
       </section>
     </div>
