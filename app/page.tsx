@@ -1,6 +1,7 @@
 import Customers from "@/components/Customers";
 import HeroSection from "@/components/HeroSection";
 import Shopping from "@/components/Shopping";
+import DressStyle from "@/components/DressStyle";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <HeroSection/>
       <Shopping/> 
       <Customers/>
+      <DressStyle></DressStyle>
     </>
     
   );
