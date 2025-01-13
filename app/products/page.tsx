@@ -81,8 +81,8 @@ const page: React.FC = () => {
       </div>
     </div>
     <div className='w-screen mx-auto flex flex-col justify-center items-center'>
-      <h2 className={`${integralCF.className} text-4xl font-bold mt-10 mx-auto`}>YOU MIGHT ALSO LIKE</h2>
-      <div className='flex flex-row justify-center items-start w-[75%] rounded-full p-6 gap-4'>
+      <h2 className={`${integralCF.className} text-3xl font-bold mt-10 mx-auto`}>YOU MIGHT ALSO LIKE</h2>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-[75%] rounded-full p-6 gap-4'>
           {NewProducts.map((product) => (
             <div className='flex flex-col justify-center items-start'>
             <Image src={product.image} alt="product"  className=' bg-[#f0f0f0] cursor-pointer hover:shadow-2xl rounded-xl'/>

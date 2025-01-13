@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
     </div>
     <hr className="mx-auto w-[90%] h-[4px] border-black/20 mb-6" />
     <div className='mx-auto w-[90%] flex flex-col gap-4 md:gap-0 md:flex-row items-center justify-between mb-6'>
-      <p className='text-[rgba(0,0,0,0.6)]'>© 2000-2021, All rights reserved</p>
+      <p className='text-[rgba(0,0,0,0.6)]'>© 2000-2025, All rights reserved</p>
       <div className='flex items-center'>
         <span>
         <svg width="66" height="49" viewBox="0 0 66 49" fill="none" xmlns="http://www.w3.org/2000/svg">
