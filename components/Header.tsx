@@ -2,11 +2,13 @@
 import React from 'react'
 import Link from 'next/link';
 import { integralCF } from '@/style/fonts';
+import styles from './Header.module.css'
 
 
 const Header: React.FC = () => {
   return (
-    <header className='w-screen bg-white'>  
+    <>
+      <header className='w-screen bg-white'>  
       <div className='first-order flex justify-center items-center text-center bg-black text-white p-2 w-full'>
       <p>Sign up and get 20% off to your first order. <Link href="/" className='block md:inline underline font-[500]'>Sign Up Now</Link></p>
       <span className='cursor-pointer' onClick={() => {
@@ -19,15 +21,19 @@ const Header: React.FC = () => {
       </span>
     </div>
     <div className='flex justify-evenly items-center p-4'>
-      <span className='block md:hidden cursor-pointer '>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      
+    <span className='block md:hidden cursor-pointer ' onClick={()=>{
+        document.querySelector('.sidebar')?.classList.toggle(`${styles.hide}`)
+      }}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+        >
         <path d="M21.375 12C21.375 12.2984 21.2565 12.5845 21.0455 12.7955C20.8345 13.0065 20.5484 13.125 20.25 13.125H3.75C3.45163 13.125 3.16548 13.0065 2.9545 12.7955C2.74353 12.5845 2.625 12.2984 2.625 12C2.625 11.7016 2.74353 11.4155 2.9545 11.2045C3.16548 10.9935 3.45163 10.875 3.75 10.875H20.25C20.5484 10.875 20.8345 10.9935 21.0455 11.2045C21.2565 11.4155 21.375 11.7016 21.375 12ZM3.75 7.125H20.25C20.5484 7.125 20.8345 7.00647 21.0455 6.7955C21.2565 6.58452 21.375 6.29837 21.375 6C21.375 5.70163 21.2565 5.41548 21.0455 5.2045C20.8345 4.99353 20.5484 4.875 20.25 4.875H3.75C3.45163 4.875 3.16548 4.99353 2.9545 5.2045C2.74353 5.41548 2.625 5.70163 2.625 6C2.625 6.29837 2.74353 6.58452 2.9545 6.7955C3.16548 7.00647 3.45163 7.125 3.75 7.125ZM20.25 16.875H3.75C3.45163 16.875 3.16548 16.9935 2.9545 17.2045C2.74353 17.4155 2.625 17.7016 2.625 18C2.625 18.2984 2.74353 18.5845 2.9545 18.7955C3.16548 19.0065 3.45163 19.125 3.75 19.125H20.25C20.5484 19.125 20.8345 19.0065 21.0455 18.7955C21.2565 18.5845 21.375 18.2984 21.375 18C21.375 17.7016 21.2565 17.4155 21.0455 17.2045C20.8345 16.9935 20.5484 16.875 20.25 16.875Z" fill="black"/>
         </svg>
-      </span>
+    </span>
       <h1 className={`${integralCF.className} font-bold text-4xl h-[50px]`}>
         <Link href={'/'}>SHOP.CO</Link>
       </h1>
-      <ul className='hidden md:flex style-none gap-4 select-none'>
+      <ul className={`hidden md:flex style-none gap-4 select-none`}>
         <Link href='/products' className='cursor-pointer hover:border-b border-black transition-all duration-100'>Shop</Link>
         <li className='cursor-pointer hover:border-b border-black transition-all duration-100'>On Sale</li>
         <li className='cursor-pointer hover:border-b border-black transition-all duration-100'><a href="#newArrival">New Arrivals</a></li>
@@ -59,11 +65,38 @@ const Header: React.FC = () => {
         <svg width="25" height="25" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M11 0.375C8.99747 0.375 7.0399 0.968821 5.37486 2.08137C3.70981 3.19392 2.41206 4.77523 1.64572 6.62533C0.879387 8.47543 0.678878 10.5112 1.06955 12.4753C1.46023 14.4393 2.42454 16.2434 3.84055 17.6595C5.25656 19.0755 7.06066 20.0398 9.02471 20.4305C10.9888 20.8211 13.0246 20.6206 14.8747 19.8543C16.7248 19.0879 18.3061 17.7902 19.4186 16.1251C20.5312 14.4601 21.125 12.5025 21.125 10.5C21.122 7.8156 20.0543 5.24199 18.1562 3.34383C16.258 1.44567 13.6844 0.377978 11 0.375ZM6.45969 16.9284C6.98195 16.2143 7.66528 15.6335 8.45418 15.2331C9.24308 14.8327 10.1153 14.624 11 14.624C11.8847 14.624 12.7569 14.8327 13.5458 15.2331C14.3347 15.6335 15.0181 16.2143 15.5403 16.9284C14.2134 17.8695 12.6268 18.375 11 18.375C9.37323 18.375 7.78665 17.8695 6.45969 16.9284ZM8.375 9.75C8.375 9.23082 8.52896 8.72331 8.8174 8.29163C9.10584 7.85995 9.5158 7.5235 9.99546 7.32482C10.4751 7.12614 11.0029 7.07415 11.5121 7.17544C12.0213 7.27672 12.489 7.52673 12.8562 7.89384C13.2233 8.26096 13.4733 8.72869 13.5746 9.23789C13.6759 9.74709 13.6239 10.2749 13.4252 10.7545C13.2265 11.2342 12.8901 11.6442 12.4584 11.9326C12.0267 12.221 11.5192 12.375 11 12.375C10.3038 12.375 9.63613 12.0984 9.14385 11.6062C8.65157 11.1139 8.375 10.4462 8.375 9.75ZM17.1875 15.3694C16.4583 14.4419 15.5289 13.6914 14.4688 13.1737C15.1444 12.4896 15.6026 11.6208 15.7858 10.6769C15.9689 9.73288 15.8688 8.75583 15.498 7.86861C15.1273 6.9814 14.5024 6.22364 13.702 5.69068C12.9017 5.15771 11.9616 4.87334 11 4.87334C10.0384 4.87334 9.09833 5.15771 8.29797 5.69068C7.49762 6.22364 6.87275 6.9814 6.50198 7.86861C6.13121 8.75583 6.0311 9.73288 6.21424 10.6769C6.39739 11.6208 6.85561 12.4896 7.53125 13.1737C6.4711 13.6914 5.54168 14.4419 4.8125 15.3694C3.89661 14.2083 3.32614 12.8129 3.1664 11.3427C3.00665 9.87254 3.2641 8.38711 3.90925 7.05644C4.55441 5.72578 5.5612 4.60366 6.81439 3.81855C8.06757 3.03343 9.5165 2.61703 10.9953 2.61703C12.4741 2.61703 13.9231 3.03343 15.1762 3.81855C16.4294 4.60366 17.4362 5.72578 18.0814 7.05644C18.7265 8.38711 18.984 9.87254 18.8242 11.3427C18.6645 12.8129 18.094 14.2083 17.1781 15.3694H17.1875Z" fill="black"/>
         </svg>
-
       </div>
     </div>
     <hr className="relative top-1 mx-auto w-[90%] h-[4px] border-[#f0f0f0] select-none" />
     </header>
+    <div className={`sidebar translate-x-[-100vw] z-[999] w-full h-screen fixed top-0 bg-white text-black duration-150`}>
+        {/* <svg width="14" height="14" viewBox="0 0 14 14" fill="black" xmlns="http://www.w3.o2000/svg" className='fixed right-0 text-black'>
+        <path d="M13.2882 11.9617C13.4644 12.1378 13.5633 12.3767 13.5633 12.6258C13.5633 12.8749 13.4644 13.1137 13.2882 13.2898C13.1121 13.466 12.8733 13.5649 12.6242 13.5649C12.3751 13.5649 12.1362 13.466 11.9601 13.2898L6.99997 8.32813L2.03825 13.2883C1.86213 13.4644 1.62326 13.5633 1.37418 13.5633C1.12511 13.5633 0.886243 13.4644 0.710122 13.2883C0.534002 13.1122 0.435059 12.8733 0.435059 12.6242C0.435059 12.3751 0.534002 12.1363 0.710122 11.9602L5.67184 7L0.711685 2.03828C0.535564 1.86216 0.436621 1.62329 0.436621 1.37422C0.436621 1.12515 0.535564 0.886277 0.711685 0.710157C0.887805 0.534036 1.12668 0.435093 1.37575 0.435093C1.62482 0.435093 1.86369 0.534036 2.03981 0.710157L6.99997 5.67188L11.9617 0.709375C12.1378 0.533255 12.3767 0.434312 12.6257 0.434312C12.8748 0.434312 13.1137 0.533255 13.2898 0.709375C13.4659 0.885496 13.5649 1.12437 13.5649 1.37344C13.5649 1.62251 13.4659 1.86138 13.2898 2.0375L8.32809 7L13.2882 11.9617Z" fill="white"/>
+        </svg> */}
+        <svg width="18" height="18" viewBox="0 0 14 14" fill="black" xmlns="http://www.w3.o2000/svg" className='fixed right-10 top-10 text-black' onClick={()=>{
+          document.querySelector('.sidebar')?.classList.toggle(`${styles.hide}`)
+        }}>
+          <path d="M13.2882 11.9617C13.4644 12.1378 13.5633 12.3767 13.5633 12.6258C13.5633 12.8749 13.4644 13.1137 13.2882 13.2898C13.1121 13.466 12.8733 13.5649 12.6242 13.5649C12.3751 13.5649 12.1362 13.466 11.9601 13.2898L6.99997 8.32813L2.03825 13.2883C1.86213 13.4644 1.62326 13.5633 1.37418 13.5633C1.12511 13.5633 0.886243 13.4644 0.710122 13.2883C0.534002 13.1122 0.435059 12.8733 0.435059 12.6242C0.435059 12.3751 0.534002 12.1363 0.710122 11.9602L5.67184 7L0.711685 2.03828C0.535564 1.86216 0.436621 1.62329 0.436621 1.37422C0.436621 1.12515 0.535564 0.886277 0.711685 0.710157C0.887805 0.534036 1.12668 0.435093 1.37575 0.435093C1.62482 0.435093 1.86369 0.534036 2.03981 0.710157L6.99997 5.67188L11.9617 0.709375C12.1378 0.533255 12.3767 0.434312 12.6257 0.434312C12.8748 0.434312 13.1137 0.533255 13.2898 0.709375C13.4659 0.885496 13.5649 1.12437 13.5649 1.37344C13.5649 1.62251 13.4659 1.86138 13.2898 2.0375L8.32809 7L13.2882 11.9617Z" fill="black"/>
+        </svg>
+
+    <ul className='flex flex-col justify-center items-center style-none gap-4 select-none h-full'>
+        <Link href='/products' className='text-2xl cursor-pointer hover:border-b border-black transition-all duration-100' onClick={()=>{
+          document.querySelector('.sidebar')?.classList.toggle(`${styles.hide}`)
+        }}>Shop</Link>
+        <li className='text-2xl cursor-pointer hover:border-b border-black transition-all duration-100' onClick={()=>{
+          document.querySelector('.sidebar')?.classList.toggle(`${styles.hide}`)
+        }}>On Sale</li>
+        <li className='text-2xl cursor-pointer hover:border-b border-black transition-all duration-100' onClick={()=>{
+          document.querySelector('.sidebar')?.classList.toggle(`${styles.hide}`)
+        }}><a href="#newArrival">New Arrivals</a></li>
+        <li className='text-2xl cursor-pointer hover:border-b border-black transition-all duration-100' onClick={()=>{
+          document.querySelector('.sidebar')?.classList.toggle(`${styles.hide}`)
+        }}><a href="#brands">Brands</a></li>
+      </ul>
+      
+    </div>
+    </>
+    
   )
 }
 

@@ -1,0 +1,4 @@
+.hide{
+    transform: translateX(0px);
+    /* transition: all 0.25s ease-in-out; */
+}

@@ -16,7 +16,7 @@ const Shopping: React.FC = () => {
       {/* New Arrivals */}
       <div className='flex flex-col justify-center items-center w-screen py-12'>
         <h2 className={`${integralCF.className} text-3xl mb-6`} id="newArrival">New Arrivals</h2>
-        <div className='flex flex-row justify-center items-start w-[75%] rounded-full p-6 gap-4'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-items-center w-[75%] rounded-full p-6 gap-4'>
           {NewProducts.map((product) => (
             <div className='flex flex-col justify-center items-start'>
             <Image src={product.image} alt="product"  className=' bg-[#f0f0f0] cursor-pointer hover:shadow-2xl rounded-xl'/>
@@ -38,7 +38,7 @@ const Shopping: React.FC = () => {
       {/* Top Selling */}
       <div className='flex flex-col justify-center items-center w-screen'>
         <h2 className={`${integralCF.className} text-3xl mb-6`}>Top Selling</h2>
-        <div className='flex flex-row justify-center items-start w-[75%] rounded-full p-6 gap-4'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-items-center w-[75%] rounded-full p-6 gap-4'>
           {TopProducts.map((product) => (
             <div className='flex flex-col justify-center items-start'>
             <Image src={product.image} alt="product"  className=' bg-[#f0f0f0] cursor-pointer hover:shadow-2xl rounded-xl'/>
