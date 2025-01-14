@@ -4,6 +4,7 @@ import Image from 'next/image'
 import pic1 from '@/public/Images/pic9.png'
 import pic2 from '@/public/Images/pic10.png'
 import pic3 from '@/public/Images/pic11.png'
+import tick from '@/public/Icons/tick.svg'
 import { NewProducts } from '@/components/Data/Products'
 import star from '@/public/Icons/small-star.svg'
 import reviews from '@/components/Data/Reviews'
@@ -35,7 +36,7 @@ const page: React.FC = () => {
           <div className='py-2'>
             <h3 className='mb-2'>Select Colors</h3>
               <div className='flex flex-row gap-4'>
-                <div className='bg-[#4F4631] w-12 h-12 rounded-full cursor-pointer select-none'></div>
+                <div className='bg-[#4F4631] w-12 h-12 rounded-full cursor-pointer select-none flex justify-center items-center'><Image src={tick} alt='tick' className='w-5'></Image></div>
                 <div className='bg-[#314F4A] w-12 h-12 rounded-full cursor-pointer select-none'></div>
                 <div className='bg-[#31344F] w-12 h-12 rounded-full cursor-pointer select-none'></div>
               </div>
@@ -45,7 +46,7 @@ const page: React.FC = () => {
             <h3 className='mb-2'>Choose Size</h3>
               <div className='flex flex-row gap-4'>
                 <button className='bg-[#f0f0f0] px-4 py-2 rounded-3xl hover:bg-black hover:text-white'>Small</button>
-                <button className='bg-[#f0f0f0] px-4 py-2 rounded-3xl hover:bg-black hover:text-white ' >Medium</button>
+                <button className='bg-[#f0f0f0] px-4 py-2 rounded-3xl hover:bg-black hover:text-white '>Medium</button>
                 <button className='bg-black text-white px-4 py-2 rounded-3xl'>Large</button>
                 <button className='bg-[#f0f0f0] px-4 py-2 rounded-3xl hover:bg-black hover:text-white'>X Large</button>
               </div>

@@ -9,10 +9,10 @@ const Header: React.FC = () => {
   return (
     <>
       <header className='w-screen bg-white'>  
-      <div className='first-order flex justify-center items-center text-center bg-black text-white p-2 w-full'>
+      <div className='first-order flex justify-center items-center text-center bg-black text-white p-2 w-full duration-300'>
       <p>Sign up and get 20% off to your first order. <Link href="/" className='block md:inline underline font-[500]'>Sign Up Now</Link></p>
       <span className='cursor-pointer' onClick={() => {
-        document.querySelector('.first-order')?.remove() 
+         document.querySelector('.first-order')?.remove() 
       }}>
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.o2000/svg" 
         className='relative left-[10px] md:left-[175px]'>
@@ -35,7 +35,7 @@ const Header: React.FC = () => {
       </h1>
       <ul className={`hidden md:flex style-none gap-4 select-none`}>
         <Link href='/products' className='cursor-pointer hover:border-b border-black transition-all duration-100'>Shop</Link>
-        <li className='cursor-pointer hover:border-b border-black transition-all duration-100'>On Sale</li>
+        <Link href='/products' className='cursor-pointer hover:border-b border-black transition-all duration-100'>On Sale</Link>
         <li className='cursor-pointer hover:border-b border-black transition-all duration-100'><a href="#newArrival">New Arrivals</a></li>
         <li className='cursor-pointer hover:border-b border-black transition-all duration-100'><a href="#brands">Brands</a></li>
       </ul>
