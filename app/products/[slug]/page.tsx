@@ -12,7 +12,7 @@ import { integralCF } from '@/style/fonts'
 import { useState } from 'react'
 
 
-const page: React.FC = () => {
+const page: React.FC = ({}) => {
   const [quantity, setQuantity] = useState(1)
   return (
     <section className='bg-white'>

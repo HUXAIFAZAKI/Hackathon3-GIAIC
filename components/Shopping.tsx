@@ -9,6 +9,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { integralCF } from '@/style/fonts'
 import DressStyle from './DressStyle'
+import Card from './Card'
 
 const Shopping: React.FC = () => {
   return (
@@ -16,18 +17,9 @@ const Shopping: React.FC = () => {
       {/* New Arrivals */}
       <div className='flex flex-col justify-center items-center w-screen py-12'>
         <h2 className={`${integralCF.className} text-3xl mb-6`} id="newArrival">New Arrivals</h2>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-items-center w-[75%] rounded-full p-6 gap-4'>
+        <div className='flex flex-wrap justify-center  flex-shrink-0  gap-[8px]'>
           {NewProducts.map((product) => (
-            <div className='flex flex-col justify-center items-start'>
-            <Image src={product.image} alt="product"  className=' bg-[#f0f0f0] cursor-pointer hover:shadow-2xl rounded-xl'/>
-            <h2 className='font-bold text-lg pt-2'>{product.name}</h2>
-            <span className='flex items-center'>{[...Array(product.rating)].map((_, index) => <Image key={index} src={star} alt='star'/>)}</span>
-
-            <span className='flex justify-start gap-5 w-full'>
-              <p className='font-bold text-xl pt-2 '>${product.discountprice}</p>
-              <p className='font-bold text-xl pt-2 line-through text-[rgba(0,0,0,0.4)]'>${product.price}</p>
-            </span>
-            </div>
+            <Card name={product.name} image={product.image} price={product.price} discountprice={product.discountprice} rating={product.rating}/>
           ))}
         </div>
       
@@ -38,23 +30,15 @@ const Shopping: React.FC = () => {
       {/* Top Selling */}
       <div className='flex flex-col justify-center items-center w-screen'>
         <h2 className={`${integralCF.className} text-3xl mb-6`}>Top Selling</h2>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-items-center w-[75%] rounded-full p-6 gap-4'>
+        <div className='flex flex-wrap justify-center  flex-shrink-0  gap-[8px]'>
           {TopProducts.map((product) => (
-            <div className='flex flex-col justify-center items-start'>
-            <Image src={product.image} alt="product"  className=' bg-[#f0f0f0] cursor-pointer hover:shadow-2xl rounded-xl'/>
-            <h2 className='font-bold text-lg pt-2'>{product.name}</h2>
-            <span className='flex items-center'>{[...Array(product.rating)].map((_, index) => <Image key={index} src={star} alt='star'/>)}</span>
-            <span className='flex justify-start gap-5 w-full'>
-              <p className='font-bold text-xl pt-2'>${product.discountprice}</p>
-              <p className='font-bold text-xl pt-2 line-through text-[rgba(0,0,0,0.4)]'>${product.price}</p>
-            </span>
-            </div>
+            <Card name={product.name} image={product.image} price={product.price} discountprice={product.discountprice} rating={product.rating}/>
           ))}
         </div> 
         <Link href='/categories' className='bg-white border border-black/20 px-12 py-3 rounded-full my-4 hover:bg-black hover:text-white'>View All</Link>
         <hr className="mx-auto w-[90%] h-[4px] border-black/20 my-12" /> 
       </div>
-      <DressStyle></DressStyle>
+      <DressStyle/>
     </div>
     
   )

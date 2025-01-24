@@ -91,7 +91,7 @@ const Header: React.FC = () => {
         <li className='text-2xl cursor-pointer hover:border-b border-black transition-all duration-100' onClick={()=>{
           document.querySelector('.sidebar')?.classList.toggle(`${styles.hide}`)
         }}>On Sale</li>
-        <li className='text-2xl cursor-pointer hover:border-b border-black transition-all duration-100' onClick={()=>{
+        <li  className='text-2xl cursor-pointer hover:border-b border-black transition-all duration-100' onClick={()=>{
           document.querySelector('.sidebar')?.classList.toggle(`${styles.hide}`)
         }}><a href="#newArrival">New Arrivals</a></li>
         <li className='text-2xl cursor-pointer hover:border-b border-black transition-all duration-100' onClick={()=>{
