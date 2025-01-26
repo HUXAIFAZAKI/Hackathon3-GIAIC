@@ -3,6 +3,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { satoshi } from "@/style/fonts";
+import { CartProvider } from "@/components/CartContext"; 
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,13 +21,13 @@ export default function RootLayout({
       <body
         className={`${satoshi.className} antialiased`}
       >
-        <Header />
-        <main>
-          {children}
-        </main>
-       
-       
-        <Footer />
+        <CartProvider>
+          <Header />
+            <main>
+              {children}
+            </main>
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

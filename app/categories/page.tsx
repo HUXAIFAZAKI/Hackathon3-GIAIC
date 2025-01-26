@@ -1,16 +1,13 @@
 "use client"
 import React from 'react'
-import { NewProducts,TopProducts } from '@/components/Data/Products'
 import Image from 'next/image'
 import filters from '@/public/Icons/filters.svg'
-import star from '@/public/Icons/small-star.svg'
 import LArrow from '@/public/Icons/arrowLeft.svg'
 import RArrow from '@/public/Icons/arrowRight.svg'
 import navArrow from '@/public/Icons/navArrow.svg'
 import tick from "@/public/Icons/tick.svg"
-import styles from "./page.module.css"
-
-const products = [...NewProducts,...TopProducts]
+import Card from '@/components/Card'
+import { allProducts } from '@/components/Data/Products'
 
 const page: React.FC = () => {
   
@@ -114,16 +111,8 @@ const page: React.FC = () => {
           </span>
         </div>
         <div className='grid grid-col-2 md:grid-cols-3 gap-y-4 gap-x-0 place-items-center grid-col-'>
-        {products.map((product) => (
-            <div className='flex flex-col justify-center items-start'>
-            <Image src={product.image} alt="product"  className=' bg-[#f0f0f0] cursor-pointer border hover:border-gray-300 hover:shadow-xl rounded-xl'/>
-            <h2 className='font-bold text-lg pt-2'>{product.name}</h2>
-            <span className='flex items-center'>{[...Array(product.rating)].map((_, index) => <Image key={index} src={star} alt='star'/>)}</span>
-            <span className='flex justify-start gap-5 w-full'>
-              <p className='font-bold text-xl pt-2'>${product.discountprice}</p>
-              <p className='font-bold text-xl pt-2 line-through text-[rgba(0,0,0,0.4)]'>${product.price}</p>
-            </span>
-            </div>
+        {allProducts.map((product) => (
+            <Card id={product.id} name={product.name} image={product.image} price={product.price} discountprice={product.discountprice} discountPercentage={product.discountPercentage} rating={product.rating}/>
           ))}
         </div>
         <hr className="my-4 mx-auto w-full h-[5px] border-[#f0f0f0] bg-[#f0f0f0] border-[1.75px] select-none" />

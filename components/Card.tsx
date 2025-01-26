@@ -3,9 +3,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import star from '../public/Icons/small-star.svg'
 
-const Card = ({name, image, price, discountprice, rating}) => {
+const Card = ({id, name, image, price, discountprice, discountPercentage, rating}:{id:string, name: string, image: string, price: number, discountprice: number, rating: number}) => {
   return (
-    <Link href={`/products/${name}`} className='p-3 grid w-[290px] justify-between  overflow-hidden border border-white hover:border-gray-500/25 duration-200 rounded-md'>
+    <Link href={`/products/${id}`} className='p-3 grid w-[290px] justify-between  overflow-hidden border border-white hover:border-gray-500/25 duration-200 rounded-md'>
     <div className='flex flex-col justify-between items-start h-full w-full'>
     <Image
           src={image}
@@ -27,7 +27,7 @@ const Card = ({name, image, price, discountprice, rating}) => {
                   ${price}
                 </h3>
                 <div className="discountTag bg-[#FF3333]/10 py-[6px] px-[14px] text-[#FF3333] rounded-[62px]">
-                  {discountprice}%
+                  {discountPercentage.toFixed(0)}%
                 </div>
               </div>
         </div>

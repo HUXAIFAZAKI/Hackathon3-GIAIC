@@ -1,11 +1,5 @@
 import React from 'react'
-import style1 from '../public/Images/dress-style-1.png'
-import style2 from '../public/Images/dress-style-2.png'
-import style3 from '../public/Images/dress-style-3.png'
-import style4 from '../public/Images/dress-style-4.png'
-import star from '../public/Icons/small-star.svg'
 import {NewProducts, TopProducts} from './Data/Products'
-import Image from 'next/image'
 import Link from 'next/link'
 import { integralCF } from '@/style/fonts'
 import DressStyle from './DressStyle'
@@ -19,7 +13,7 @@ const Shopping: React.FC = () => {
         <h2 className={`${integralCF.className} text-3xl mb-6`} id="newArrival">New Arrivals</h2>
         <div className='flex flex-wrap justify-center  flex-shrink-0  gap-[8px]'>
           {NewProducts.map((product) => (
-            <Card name={product.name} image={product.image} price={product.price} discountprice={product.discountprice} rating={product.rating}/>
+            <Card id={product.id} name={product.name} image={product.image} price={product.price} discountprice={product.discountprice} discountPercentage={product.discountPercentage} rating={product.rating}/>
           ))}
         </div>
       
@@ -32,7 +26,7 @@ const Shopping: React.FC = () => {
         <h2 className={`${integralCF.className} text-3xl mb-6`}>Top Selling</h2>
         <div className='flex flex-wrap justify-center  flex-shrink-0  gap-[8px]'>
           {TopProducts.map((product) => (
-            <Card name={product.name} image={product.image} price={product.price} discountprice={product.discountprice} rating={product.rating}/>
+            <Card id={product.id} name={product.name} image={product.image} price={product.price} discountprice={product.discountprice} discountPercentage={product.discountPercentage} rating={product.rating}/>
           ))}
         </div> 
         <Link href='/categories' className='bg-white border border-black/20 px-12 py-3 rounded-full my-4 hover:bg-black hover:text-white'>View All</Link>
