@@ -215,7 +215,7 @@ const page: React.FC<PageProps> = ({ params }) => {
               image={product.image}
               price={product.price}
               discountprice={product.discountprice}
-              discountPercentage={product.discountPercentage}
+              discountPercentage={product.discountPercentage ?? 0}
               rating={product.rating}
             />
           ))}
