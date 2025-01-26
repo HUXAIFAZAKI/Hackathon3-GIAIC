@@ -3,7 +3,17 @@ import Image from 'next/image'
 import Link from 'next/link'
 import star from '../public/Icons/small-star.svg'
 
-const Card = ({id, name, image, price, discountprice, discountPercentage, rating}:{id:string, name: string, image: string, price: number, discountprice: number, rating: number}) => {
+interface CardProps {
+  id: string;
+  name: string;
+  image: string;
+  price: number;
+  discountprice: number;
+  discountPercentage: number; 
+  rating: number;
+}
+
+const Card = ({id, name, image, price, discountprice, discountPercentage, rating}: CardProps) => {
   return (
     <Link href={`/products/${id}`} className='p-3 grid w-[290px] justify-between  overflow-hidden border border-white hover:border-gray-500/25 duration-200 rounded-md'>
     <div className='flex flex-col justify-between items-start h-full w-full'>
