@@ -12,7 +12,7 @@ const Shopping: React.FC = () => {
       <div className='flex flex-col justify-center items-center w-screen py-12'>
         <h2 className={`${integralCF.className} text-3xl mb-6`} id="newArrival">New Arrivals</h2>
         <div className='flex flex-wrap justify-center  flex-shrink-0  gap-[8px]'>
-          {NewProducts.map((product) => (
+          {NewProducts.slice(0,4).map((product) => (
             <Card id={product.id} name={product.name} image={product.image} price={product.price} discountprice={product.discountprice} discountPercentage={product.discountPercentage} rating={product.rating}/>
           ))}
         </div>
@@ -25,7 +25,7 @@ const Shopping: React.FC = () => {
       <div className='flex flex-col justify-center items-center w-screen'>
         <h2 className={`${integralCF.className} text-3xl mb-6`}>Top Selling</h2>
         <div className='flex flex-wrap justify-center  flex-shrink-0  gap-[8px]'>
-          {TopProducts.map((product) => (
+          {TopProducts.slice(0,4).map((product) => (
             <Card id={product.id} name={product.name} image={product.image} price={product.price} discountprice={product.discountprice} discountPercentage={product.discountPercentage} rating={product.rating}/>
           ))}
         </div> 

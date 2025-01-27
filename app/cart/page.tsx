@@ -22,7 +22,7 @@ const page: React.FC = function(){
       <div className="pt-4 mx-auto w-[80vw]">
         <h1 className={`${integralCF.className} text-4xl`}>YOUR CART</h1>
         <div className="flex flex-col lg:flex-row lg:gap-4 justify-around items-center">
-          <div className="flex flex-col justify-around items-center lg:w-[60%] min-h-20 gap-4 border border-gray rounded-3xl mt-10">
+          <div className="flex flex-col justify-around items-center lg:w-[60%] min-w-[50%] min-h-20 gap-4 border border-gray rounded-3xl mt-10">
             {cart.length === 0 ? (
               <p>Your cart is empty</p>
             ) : (
