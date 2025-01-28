@@ -36,8 +36,8 @@ const Header: React.FC = () => {
         <Link href={'/'}>SHOP.CO</Link>
       </h1>
       <ul className={`hidden md:flex style-none gap-4 select-none`}>
-        <Link href='/categories' className='cursor-pointer hover:border-b border-black transition-all duration-100'>Shop</Link>
-        <Link href='/categories' className='cursor-pointer hover:border-b border-black transition-all duration-100'>On Sale</Link>
+        <Link href='/products' className='cursor-pointer hover:border-b border-black transition-all duration-100'>Shop</Link>
+        <Link href='/products' className='cursor-pointer hover:border-b border-black transition-all duration-100'>On Sale</Link>
         <li className='cursor-pointer hover:border-b border-black transition-all duration-100'><a href="#newArrival">New Arrivals</a></li>
         <li className='cursor-pointer hover:border-b border-black transition-all duration-100'><a href="#brands">Brands</a></li>
       </ul>
@@ -90,7 +90,7 @@ const Header: React.FC = () => {
         </div>
         
     <ul className='flex flex-col justify-center items-center style-none gap-4 select-none h-full'>
-        <Link href='/categories' className='text-2xl cursor-pointer hover:border-b border-black transition-all duration-100' onClick={()=>{
+        <Link href='/products' className='text-2xl cursor-pointer hover:border-b border-black transition-all duration-100' onClick={()=>{
           document.querySelector('.sidebar')?.classList.toggle(`${styles.hide}`)
         }}>Shop</Link>
         <li className='text-2xl cursor-pointer hover:border-b border-black transition-all duration-100' onClick={()=>{

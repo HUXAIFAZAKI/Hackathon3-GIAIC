@@ -10,12 +10,13 @@ import denim1 from '@/public/Images/denim1.png';
 import hoodie1 from '@/public/Images/hoodie1.png'
 import cargo1 from '@/public/Images/cargo1.png'
 import parkacoat from '@/public/Images/parkacoat.png'
+import { StaticImageData } from 'next/image';
 
 type Products = {
   id: string;
   name: string;
   image: string | any;
-  otherImages?: string[];
+  otherImages?: StaticImageData[];
   price: number;
   discountprice: number;
   discountPercentage: number;
