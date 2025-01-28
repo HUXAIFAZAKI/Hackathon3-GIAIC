@@ -1,8 +1,8 @@
 import React from 'react'
 import Link from 'next/link';
-import NewsLetter from './NewsLetter';
+import NewsLetter from '../NewsLetter';
 import { integralCF } from '@/style/fonts'
-import socialsData from './Data/SocialsData';
+import socialsData from '../Data/SocialsData';
 
 
 const Footer: React.FC = () => {
