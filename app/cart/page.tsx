@@ -7,6 +7,17 @@ import tag from "@/public/Icons/tag.svg";
 
 const CartPage: React.FC = () => {
   const { cart, updateQuantity, removeFromCart } = useCart();
+  const [promoCode, setPromoCode] = useState('');
+  const [isValidPromo, setIsValidPromo] = useState(true);
+
+  const handleApplyPromo = () => {
+    const validPromos = ['DISCOUNT10', 'SAVE20'];
+    if (validPromos.includes(promoCode)) {
+      setIsValidPromo(true);
+    } else {
+      setIsValidPromo(false);
+    }
+};
 
   const handleQuantityChange = (id: string, action: "increment" | "decrement") => {
     const cartItem = cart.find((item) => item.id === id);
@@ -27,7 +38,12 @@ const CartPage: React.FC = () => {
       <div className="pt-6 mx-auto w-[85vw] max-w-6xl ">
         <h1 className={`${integralCF.className} text-4xl font-bold mb-6`}>YOUR CART</h1>
         {cart.length === 0 ? (
-          <p className="text-center text-lg text-gray-600">Your cart is empty</p>
+          <div className="text-center">
+          <p className="text-lg text-gray-600 mb-4">Your cart is empty</p>
+          <a href="/products" className="bg-black text-white px-6 py-3 rounded-full text-lg hover:bg-gray-900">
+            Shop Now
+          </a>
+        </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Cart Items */}
@@ -115,6 +131,7 @@ const CartPage: React.FC = () => {
                   type="text"
                   placeholder="Add promo code"
                   className="flex-1 px-2 bg-transparent outline-none"
+                  
                 />
                 <button className="bg-black text-white px-4 py-2 rounded-full text-sm hover:bg-gray-900">
                   Apply

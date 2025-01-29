@@ -38,6 +38,7 @@ const Card = ({
             width={290}
             height={298}
             className="h-[240px] mb-[5px] w-[290px] md:h-[298px] object-cover rounded-[20px] object-center transition-transform duration-300 hover:scale-105"
+            priority
           />
           {discountprice > 0 && (
             <span className="absolute top-2 left-2 bg-[#FF3333]/75 text-white text-xs font-bold py-1 px-3 rounded-full">

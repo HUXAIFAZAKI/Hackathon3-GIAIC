@@ -108,12 +108,14 @@ const page: React.FC = () => {
             <div className='flex gap-2 flex-wrap'>
                 {["red", "green", "blue", "yellow", "orange", "black", "violet", "pink", "slate"].map(color => (
                   <div 
-                    key={color} 
-                    className={`bg-${color}-500 w-8 h-8 rounded-full cursor-pointer select-none flex justify-center items-center ${filters.color === color ? "border-2 border-black" : ""}`}
-                    onClick={() => updateFilters({ color: filters.color === color ? null : color })}
-                  >
-                    {filters.color === color && <Image src={tick} alt='tick' className='w-4 h-4' />}
-                  </div>
+                  key={color} 
+                  className={`w-8 h-8 rounded-full cursor-pointer select-none flex justify-center items-center ${filters.color === color ? "border-2 border-black" : ""}`}
+                  style={{ backgroundColor: color }}
+                  onClick={() => updateFilters({ color: filters.color === color ? null : color })}
+                >
+                  {filters.color === color && <Image src={tick} alt='tick' className='w-4 h-4' />}
+                </div>
+                
                 ))}
             </div>
           </div>
@@ -191,7 +193,7 @@ const page: React.FC = () => {
             </button>
             {/* Mobile Filters */}
             {showFilters && (
-            <div className={`${styles.filterOverlay} fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center`}>
+            <div className={` fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-[999]`}>
               <div className="bg-white p-4 rounded-lg w-3/4">
               <div className='flex justify-center items-center'>
                 <h2 className='font-bold text-2xl text-center text-black inline-block'>Filters</h2>
@@ -230,17 +232,19 @@ const page: React.FC = () => {
           <hr className="relative top-1 mx-auto w-[90%] h-[4px] border-[#f0f0f0] select-none" />
           <div className='my-4'>
             <h3 className='font-bold text-xl text-center '>Colors</h3>
-            <div className='flex items-center justify-center gap-2 flex-wrap'>
+            <div className='flex gap-2 flex-wrap justify-center items-center'>
                 {["red", "green", "blue", "yellow", "orange", "black", "violet", "pink", "slate"].map(color => (
                   <div 
-                    key={color} 
-                    className={`bg-${color}-500 w-8 h-8 rounded-full cursor-pointer select-none flex justify-center items-center ${filters.color === color ? "border-2 border-black" : ""}`}
-                    onClick={() => updateFilters({ color: filters.color === color ? null : color })}
-                  >
-                    {filters.color === color && <Image src={tick} alt='tick' className='w-4 h-4' />}
-                  </div>
+                  key={color} 
+                  className={`w-8 h-8 rounded-full cursor-pointer select-none flex justify-center items-center ${filters.color === color ? "border-2 border-black" : ""}`}
+                  style={{ backgroundColor: color }}
+                  onClick={() => updateFilters({ color: filters.color === color ? null : color })}
+                >
+                  {filters.color === color && <Image src={tick} alt='tick' className='w-4 h-4' />}
+                </div>
+                
                 ))}
-            </div>
+              </div>
           </div>
           <hr className="relative top-1 mx-auto w-[90%] h-[4px] border-[#f0f0f0] select-none" />
           <div className='my-4'>

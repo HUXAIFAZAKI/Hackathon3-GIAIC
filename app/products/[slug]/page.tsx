@@ -22,6 +22,7 @@ const page: React.FC<PageProps> = ({ params }) => {
   const [selectedSize, setSelectedSize] = useState<string>('');
   const [quantity, setQuantity] = useState(1);
   const [selectedImage, setSelectedImage] = useState<string>('');
+  const [isLoading, setIsLoading] = useState(true);
 
   const colors = [
     { id: 'color1', bgColor: '#4F4631' },
@@ -45,6 +46,7 @@ const page: React.FC<PageProps> = ({ params }) => {
     const shuffledProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 4);
     setMightLike(shuffledProducts);
     setSelectedImage(product.image);
+    setIsLoading(false);
   }, []);
 
   const handleColorClick = (color: string) => {
@@ -170,6 +172,7 @@ const page: React.FC<PageProps> = ({ params }) => {
             <button
               onClick={handleAddToCart}
               className="bg-black text-white px-4 py-3 rounded-3xl w-[40%]"
+              disabled={!selectedColor || !selectedSize}
             >
               Add to Cart
             </button>

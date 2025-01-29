@@ -17,8 +17,7 @@ const Shopping: React.FC = () => {
           ))}
         </div>
       
-        <Link href='/categories' className='bg-white border border-black/20 px-12 py-3 rounded-full my-4 hover:bg-black hover:text-white'>View All</Link>
-       
+        <Link href='/products' className='bg-white border border-black/20 px-12 py-3 rounded-full my-4 hover:bg-black hover:text-white'>View All</Link>
         <hr className="mx-auto w-[90%] h-[4px] border-black/20 my-12" />
       </div>
       {/* Top Selling */}
@@ -29,7 +28,7 @@ const Shopping: React.FC = () => {
             <Card id={product.id} name={product.name} image={product.image} price={product.price} discountprice={product.discountprice} discountPercentage={product.discountPercentage} rating={product.rating}/>
           ))}
         </div> 
-        <Link href='/categories' className='bg-white border border-black/20 px-12 py-3 rounded-full my-4 hover:bg-black hover:text-white'>View All</Link>
+        <Link href='/products' className='bg-white border border-black/20 px-12 py-3 rounded-full my-4 hover:bg-black hover:text-white'>View All</Link>
         <hr className="mx-auto w-[90%] h-[4px] border-black/20 my-12" /> 
       </div>
       <DressStyle/>
