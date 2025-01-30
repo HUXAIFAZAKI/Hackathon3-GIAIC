@@ -18,7 +18,6 @@ interface CartContextType {
   updateQuantity: (id: string, quantity: number) => void;
   totalPrice: number;
   cartCount: number;
-  clearCart: () => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -79,20 +78,12 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     );
   };
 
-  // const totalPrice = cart.reduce((acc, item) => {
-  //   const price = typeof item.price === 'string' ? item.price : String(item.price);
-  //   return acc + parseFloat(price.replace('$', '')) * item.quantity;
-  // }, 0);
-
   const totalPrice = useMemo(() => {
     return cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   }, [cart]);
 
-  const clearCart = () => {
-    setCart([]);
-  };
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, totalPrice, cartCount, clearCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, totalPrice, cartCount }}>
       {children}
     </CartContext.Provider>
   );

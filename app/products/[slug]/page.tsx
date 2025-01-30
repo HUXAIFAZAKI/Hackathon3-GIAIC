@@ -22,7 +22,7 @@ const page: React.FC<PageProps> = ({ params }) => {
   const [selectedSize, setSelectedSize] = useState<string>('');
   const [quantity, setQuantity] = useState(1);
   const [selectedImage, setSelectedImage] = useState<string>('');
-  const [isLoading, setIsLoading] = useState(true);
+  const [activeSection, setActiveSection] = useState<'details' | 'reviews' | 'faqs'>('details');
 
   const colors = [
     { id: 'color1', bgColor: '#4F4631' },
@@ -46,7 +46,6 @@ const page: React.FC<PageProps> = ({ params }) => {
     const shuffledProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 4);
     setMightLike(shuffledProducts);
     setSelectedImage(product.image);
-    setIsLoading(false);
   }, []);
 
   const handleColorClick = (color: string) => {
@@ -180,29 +179,78 @@ const page: React.FC<PageProps> = ({ params }) => {
         </div>
       </div>
       <div className="w-screen mx-auto mt-10 select-none">
-        <span className="w-[80%] mx-auto flex justify-around items-center gap-4">
-          <h3 className="border-b-2 text-[rgba(0,0,0,0.6)] border-black/20 hover:text-black hover:border-black cursor-pointer">
-            Product Details
-          </h3>
-          <h3 className="border-b-2 border-black cursor-pointer">Rating & Reviews</h3>
-          <h3 className="border-b-2 text-[rgba(0,0,0,0.6)] border-black/20 hover:text-black hover:border-black cursor-pointer">
-            FAQs
-          </h3>
-        </span>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 place-items-center w-screen p-4 bg-white">
-          {reviews.map((review) => (
-            <div className="flex flex-col justify-center gap-4 px-6 py-8 bg-white border border-gray rounded-xl h-[250px] max-w-[400px]">
-              <span className="flex items-center">
-                {[...Array(review.stars)].map((_, index) => (
-                  <Image key={index} src={star} alt="star" />
-                ))}
-              </span>
-              <h3 className="text-[rgba(0,0,0,0.8)] font-bold text-xl">{review.name}</h3>
-              <p className="text-[rgba(0,0,0,0.8)] overflow-clip">{review.review}</p>
-            </div>
-          ))}
+  <span className="w-[80%] mx-auto flex justify-around items-center gap-4">
+    <h3
+      className={`md:text-lg border-b-2 ${
+        activeSection === 'details' ? 'border-black text-black' : 'border-black/20 text-[rgba(0,0,0,0.6)]'
+      } cursor-pointer`}
+      onClick={() => setActiveSection('details')}
+    >
+      Product Details
+    </h3>
+    <h3
+      className={`md:text-lg border-b-2 ${
+        activeSection === 'reviews' ? 'border-black text-black' : 'border-black/20 text-[rgba(0,0,0,0.6)]'
+      } cursor-pointer`}
+      onClick={() => setActiveSection('reviews')}
+    >
+      Rating & Reviews
+    </h3>
+    <h3
+      className={`md:text-lg border-b-2 ${
+        activeSection === 'faqs' ? 'border-black text-black' : 'border-black/20 text-[rgba(0,0,0,0.6)]'
+      } cursor-pointer`}
+      onClick={() => setActiveSection('faqs')}
+    >
+      FAQs
+    </h3>
+  </span>
+
+  {activeSection === 'details' && (
+    <div className="w-[80%] mx-auto p-4">
+      <h3 className="text-2xl font-bold mb-4">Product Details</h3>
+      <p className="text-[rgba(0,0,0,0.8)]">
+        This is a high-quality product designed for comfort and durability. It features premium materials and a sleek design.
+      </p>
+    </div>
+  )}
+
+  {activeSection === 'reviews' && (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 place-items-center w-screen p-4 bg-white">
+      {reviews.map((review, index) => (
+        <div key={index} className="flex flex-col justify-center gap-4 px-6 py-8 bg-white border border-gray rounded-xl h-[250px] max-w-[400px]">
+          <span className="flex items-center">
+            {[...Array(review.stars)].map((_, i) => (
+              <Image key={i} src={star} alt="star" width={16} height={16} />
+            ))}
+          </span>
+          <h3 className="text-[rgba(0,0,0,0.8)] font-bold text-xl">{review.name}</h3>
+          <p className="text-[rgba(0,0,0,0.8)] overflow-clip">{review.review}</p>
+        </div>
+      ))}
+    </div>
+  )}
+
+  {activeSection === 'faqs' && (
+    <div className="w-[80%] mx-auto p-4">
+      <h3 className="text-2xl font-bold mb-4">FAQs</h3>
+      <div className="space-y-4">
+        <div>
+          <h4 className="font-bold">What is the return policy?</h4>
+          <p className="text-[rgba(0,0,0,0.8)]">
+            You can return the product within 30 days of purchase for a full refund.
+          </p>
+        </div>
+        <div>
+          <h4 className="font-bold">How do I track my order?</h4>
+          <p className="text-[rgba(0,0,0,0.8)]">
+            You will receive a tracking number via email once your order is shipped.
+          </p>
         </div>
       </div>
+    </div>
+  )}
+</div>
       <div className="w-screen mx-auto flex flex-col justify-center items-center">
         <h2
           className={`${integralCF.className} text-3xl font-bold mt-10 mb-5 mx-auto`}

@@ -37,8 +37,15 @@ const page: React.FC = () => {
   };
 
   const handleSizeChange = (size: string) => {
-    updateFilters({ size: filters.size === size ? null : size });
+    setFilters((prev) => ({
+      ...prev,
+      size: prev.size?.includes(size)
+        ? prev.size.filter((s) => s !== size)
+        : [...(prev.size || []), size] 
+    }));
   };
+  
+  
 
   const filteredProducts = useMemo(() => {
     return allProducts.filter(product =>
@@ -46,7 +53,9 @@ const page: React.FC = () => {
       (product.discountprice ? product.discountprice : product.price) <= filters.maxPrice &&
       (filters.category ? product.category === filters.category : true) && 
       (filters.dressStyle ? product.dressStyle?.includes(filters.dressStyle) : true) &&
-      (filters.size ? product.size === filters.size : true)
+      (filters.size ? product.size?.includes(filters.size) : true) &&
+      (filters.color ? product.color?.includes(filters.color) : true)
+
     ).sort((a, b) => {
       switch (filters.sortBy) {
         case 'Price: Low to High':
@@ -306,7 +315,6 @@ const page: React.FC = () => {
           </span>
         </div>
 
-        {/* <div className='grid grid-col-2 md:grid-cols-3 gap-y-4 gap-x-0 place-items-center'> */}
         <div className='flex flex-row md:gap-x-10 flex-wrap justify-center'>
           {currentProducts.map((product) => (
             <Card id={product.id} name={product.name} image={product.image} price={product.price} discountprice={product.discountprice} discountPercentage={product.discountPercentage} rating={product.rating} />
@@ -318,6 +326,7 @@ const page: React.FC = () => {
         {/* Pagination controls */}
         <div className='flex flex-row justify-between w-[90%] mx-auto'>
           <button 
+            aria-label="Previous page"
             className='border-black/20 border rounded-xl py-2 px-4 flex justify-center items-center gap-4'
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
@@ -339,6 +348,7 @@ const page: React.FC = () => {
           </span>
 
           <button 
+            aria-label='Next page'
             className='border-black/20 border rounded-xl py-2 px-4 flex justify-center items-center gap-4'
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}

@@ -25,7 +25,7 @@ const socialsData: SocialNetworks[] = [
   {
     id: 4,
     icon: <FaGithub />,
-    url: "https://github.com/huxaifa",
+    url: "https://github.com/HUXAIFAZAKI/",
   },
 ];
 

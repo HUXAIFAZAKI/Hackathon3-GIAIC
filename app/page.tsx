@@ -1,4 +1,4 @@
-import Customers from "@/components/Customers";
+import Customers from "@/components/CustomerReviews/Customers";
 import HeroSection from "@/components/HeroSection";
 import Shopping from "@/components/Shopping";
 import Head from 'next/head';

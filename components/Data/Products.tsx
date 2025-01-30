@@ -15,7 +15,7 @@ import { StaticImageData } from 'next/image';
 type Products = {
   id: string;
   name: string;
-  image: string | any;
+  image: StaticImageData;
   otherImages?: StaticImageData[];
   price: number;
   discountprice: number;
@@ -24,6 +24,8 @@ type Products = {
   description: string;
   category: string;
   dressStyle: string[];
+  size?: string[];
+  color?: string[];
 };
 
 export const NewProducts: Products[] = [
@@ -38,7 +40,9 @@ export const NewProducts: Products[] = [
     rating: 4,
     description: "A stylish t-shirt featuring tape details on the sleeves, made with high-quality cotton for ultimate comfort.",
     category: "T-Shirts",
-    dressStyle: ["Casual"]
+    dressStyle: ["Casual"],
+    size:["Small", "Medium", "Large", "X Large"],
+    color: ["Red", "Blue", "Green"]
   },
   {
     id: "33d5e542-4ebc-48ca-9e8e-feb7aa24dc65",
@@ -51,7 +55,9 @@ export const NewProducts: Products[] = [
     rating: 3,
     description: "Modern skinny fit jeans designed for a sleek and trendy look. Made with stretchable denim for extra comfort.",
     category: "Jeans",
-    dressStyle: ["Casual"]
+    dressStyle: ["Casual"],
+    size: ["Small", "Medium", "Large", "X Large"],
+    color: ["Red", "Blue", "Green"],
   },
   {
     id: "28572613-8ce5-4e24-b67f-931f50a2c9ba",
@@ -64,7 +70,9 @@ export const NewProducts: Products[] = [
     rating: 5,
     description: "A classic checkered shirt with a button-down collar, perfect for casual or semi-formal occasions.",
     category: "Shirts",
-    dressStyle: ["Casual", "Formal"]
+    dressStyle: ["Casual", "Formal"],
+    size: ["S", "M", "L", "XL"],
+    color: ["Red", "Blue", "Black"]
   },
   {
     id: "28f63ceb-daf0-40b2-8df0-41a4cec26944",
@@ -77,7 +85,9 @@ export const NewProducts: Products[] = [
     rating: 4,
     description: "A comfortable cotton t-shirt with contrast striped sleeves, offering a sporty yet casual look.",
     category: "T-Shirts",
-    dressStyle: ["Casual", "Gym"]
+    dressStyle: ["Casual", "Gym"],
+    size: ["S", "M", "L", "XL"],
+    color: ["Red", "Green"],
   },
   {
     id: "f56dce2c-347f-4c89-bbbe-b4b907a7e5f5",
@@ -90,7 +100,9 @@ export const NewProducts: Products[] = [
     rating: 4,
     description: "A soft and warm flannel shirt, perfect for layering during cooler months.",
     category: "Shirts",
-    dressStyle: ["Casual"]
+    dressStyle: ["Casual"],
+    size: ["S", "M", "L", "XL"],
+    color: ["Red", "Blue", "Green"]
   },
   {
     id: "0a93d4a7-2ed6-4e38-858f-b462c58251c6",
@@ -103,7 +115,9 @@ export const NewProducts: Products[] = [
     rating: 5,
     description: "A classic denim jacket with a vintage wash, versatile enough for casual or semi-formal outfits.",
     category: "Jackets",
-    dressStyle: ["Casual"]
+    dressStyle: ["Casual"],
+    size: ["S", "M", "L", "XL"],
+    color: ["Blue"]
   },
   {
     id: "e8b85c28-3329-41e3-b6f4-8b14f0132bfb",
@@ -116,7 +130,9 @@ export const NewProducts: Products[] = [
     rating: 4,
     description: "Stylish cargo pants with multiple pockets and a relaxed fit, perfect for casual outings.",
     category: "Pants",
-    dressStyle: ["Casual"]
+    dressStyle: ["Casual"],
+    size: ["S", "M", "L", "XL"],
+    color: ["Black"]
   },
   {
     id: "db017bb0-bfff-4789-b7a4-b4b56c2ecf7b",
@@ -129,7 +145,9 @@ export const NewProducts: Products[] = [
     rating: 4,
     description: "A comfortable hoodie with a classic design, perfect for layering or casual wear.",
     category: "Hoodies",
-    dressStyle: ["Casual"]
+    dressStyle: ["Casual"],
+    size: ["Small", "M", "L", "XL"],
+    color: ["Black"]
   }
 ];
 
