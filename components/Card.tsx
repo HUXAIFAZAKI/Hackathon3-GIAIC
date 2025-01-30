@@ -61,7 +61,7 @@ const Card = ({
               ${finalPrice}
             </span>
             {discountprice > 0 && (
-              <span className="text-sm font-medium text-gray-500 line-through">
+              <span className="text-base font-medium text-gray-500 line-through">
                 ${price}
               </span>
             )}
