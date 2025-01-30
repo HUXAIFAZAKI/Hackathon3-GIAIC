@@ -27,7 +27,7 @@ const Card = ({
   return (
     <Link
       href={`/products/${id}`}
-      className="p-4 grid w-[290px] justify-between overflow-hidden border border-transparent hover:border-gray-300 duration-200 rounded-lg shadow-sm hover:shadow-lg"
+      className="p-4 grid w-[290px]  justify-between overflow-hidden border border-transparent hover:border-gray-300 duration-200 rounded-lg shadow-sm hover:shadow-lg"
       aria-label={`View product ${name}`}
     >
       <div className="flex flex-col justify-between items-start h-full w-full">
@@ -37,7 +37,7 @@ const Card = ({
             alt={name}
             width={290}
             height={298}
-            className="h-[240px] mb-[5px] w-[290px] md:h-[298px] object-cover rounded-[20px] object-center transition-transform duration-300 hover:scale-105"
+            className="h-[240px] mb-[5px] w-[290px] md:h-[298px] sm-[240px] object-cover rounded-[20px] object-center transition-transform duration-300 hover:scale-105"
             priority
           />
           {discountprice > 0 && (

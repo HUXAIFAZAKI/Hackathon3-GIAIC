@@ -8,6 +8,9 @@ import Card from '@/components/Card';
 import { integralCF } from '@/style/fonts';
 import { allProducts } from '@/components/Data/Products';
 import { useCart } from '@/components/CartContext';
+import { faqs } from '@/components/Data/FAQs';
+import { FaQuestionCircle, FaTag } from 'react-icons/fa';
+import FAQ from '@/components/FAQ';
 
 interface PageProps {
   params: {
@@ -22,7 +25,7 @@ const page: React.FC<PageProps> = ({ params }) => {
   const [selectedSize, setSelectedSize] = useState<string>('');
   const [quantity, setQuantity] = useState(1);
   const [selectedImage, setSelectedImage] = useState<string>('');
-  const [activeSection, setActiveSection] = useState<'details' | 'reviews' | 'faqs'>('details');
+  const [activeSection, setActiveSection] = useState<'details' | 'reviews' | 'faqs'>('reviews');
 
   const colors = [
     { id: 'color1', bgColor: '#4F4631' },
@@ -181,7 +184,7 @@ const page: React.FC<PageProps> = ({ params }) => {
       <div className="w-screen mx-auto mt-10 select-none">
   <span className="w-[80%] mx-auto flex justify-around items-center gap-4">
     <h3
-      className={`md:text-lg border-b-2 ${
+      className={`text-lg border-b-2 ${
         activeSection === 'details' ? 'border-black text-black' : 'border-black/20 text-[rgba(0,0,0,0.6)]'
       } cursor-pointer`}
       onClick={() => setActiveSection('details')}
@@ -189,7 +192,7 @@ const page: React.FC<PageProps> = ({ params }) => {
       Product Details
     </h3>
     <h3
-      className={`md:text-lg border-b-2 ${
+      className={`text-lg border-b-2 ${
         activeSection === 'reviews' ? 'border-black text-black' : 'border-black/20 text-[rgba(0,0,0,0.6)]'
       } cursor-pointer`}
       onClick={() => setActiveSection('reviews')}
@@ -197,7 +200,7 @@ const page: React.FC<PageProps> = ({ params }) => {
       Rating & Reviews
     </h3>
     <h3
-      className={`md:text-lg border-b-2 ${
+      className={`text-lg border-b-2 ${
         activeSection === 'faqs' ? 'border-black text-black' : 'border-black/20 text-[rgba(0,0,0,0.6)]'
       } cursor-pointer`}
       onClick={() => setActiveSection('faqs')}
@@ -208,10 +211,38 @@ const page: React.FC<PageProps> = ({ params }) => {
 
   {activeSection === 'details' && (
     <div className="w-[80%] mx-auto p-4">
-      <h3 className="text-2xl font-bold mb-4">Product Details</h3>
-      <p className="text-[rgba(0,0,0,0.8)]">
-        This is a high-quality product designed for comfort and durability. It features premium materials and a sleek design.
-      </p>
+      <div className="bg-white p-6 rounded-lg shadow-md">
+        <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
+          <FaTag className="text-black" />
+          Product Details
+        </h3>
+        <div className="space-y-4">
+          <div>
+            <h4 className="font-bold">Materials</h4>
+            <p className="text-[rgba(0,0,0,0.8)]">
+              Made from 100% organic cotton, this product is soft, breathable, and eco-friendly.
+            </p>
+          </div>
+          <div>
+            <h4 className="font-bold">Dimensions</h4>
+            <p className="text-[rgba(0,0,0,0.8)]">
+              Length: 30 inches, Width: 20 inches, Height: 10 inches.
+            </p>
+          </div>
+          <div>
+            <h4 className="font-bold">Care Instructions</h4>
+            <p className="text-[rgba(0,0,0,0.8)]">
+              Machine wash cold with like colors. Tumble dry low. Do not bleach.
+            </p>
+          </div>
+          <div>
+            <h4 className="font-bold">Shipping Information</h4>
+            <p className="text-[rgba(0,0,0,0.8)]">
+              Ships within 1-2 business days. Free shipping on orders over $200.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   )}
 
@@ -233,19 +264,15 @@ const page: React.FC<PageProps> = ({ params }) => {
 
   {activeSection === 'faqs' && (
     <div className="w-[80%] mx-auto p-4">
-      <h3 className="text-2xl font-bold mb-4">FAQs</h3>
-      <div className="space-y-4">
-        <div>
-          <h4 className="font-bold">What is the return policy?</h4>
-          <p className="text-[rgba(0,0,0,0.8)]">
-            You can return the product within 30 days of purchase for a full refund.
-          </p>
-        </div>
-        <div>
-          <h4 className="font-bold">How do I track my order?</h4>
-          <p className="text-[rgba(0,0,0,0.8)]">
-            You will receive a tracking number via email once your order is shipped.
-          </p>
+      <div className="bg-white p-6 rounded-lg shadow-md">
+        <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
+          <FaQuestionCircle className="text-black" />
+          Frequently Asked Questions
+        </h3>
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <FAQ key={index} question={faq.question} answer={faq.answer} />
+          ))}
         </div>
       </div>
     </div>
