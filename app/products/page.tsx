@@ -21,7 +21,7 @@ const page: React.FC = () => {
     dressStyle: null,
     sortBy: 'Most Popular',
     color: null,
-    size: null
+    size: [],
   });
 
   const updateFilters = (newFilters: Partial<typeof filters>) => {
@@ -45,17 +45,14 @@ const page: React.FC = () => {
     }));
   };
   
-  
-
   const filteredProducts = useMemo(() => {
     return allProducts.filter(product =>
       (product.discountprice ? product.discountprice : product.price) >= filters.minPrice &&
       (product.discountprice ? product.discountprice : product.price) <= filters.maxPrice &&
       (filters.category ? product.category === filters.category : true) && 
       (filters.dressStyle ? product.dressStyle?.includes(filters.dressStyle) : true) &&
-      (filters.size ? product.size?.includes(filters.size) : true) &&
-      (filters.color ? product.color?.includes(filters.color) : true)
-
+      (filters.size?.length ? filters.size.some(size => product.size?.includes(size)) : true) &&
+      (filters.color ? product.color?.some(c => c === filters.color) : true)
     ).sort((a, b) => {
       switch (filters.sortBy) {
         case 'Price: Low to High':
@@ -84,7 +81,7 @@ const page: React.FC = () => {
   return (
     <section className='bg-white mt-10 mx-auto w-full md:w-[90%] flex flex-row gap-5'>
       {/* Filters */}
-      <div className='hidden border border-gray rounded-3xl w-[20%] p-4 md:flex flex-col gap-4 h-full traslate-y-[100vw]'>
+      <div className='hidden border border-gray rounded-3xl w-[20%] p-4 md:flex flex-col gap-4 h-full traslate-y-[100vw] select-none'>
           <h2 className='font-bold text-2xl'>Filters</h2>
           <hr className="relative top-1 mx-auto w-[90%] h-[4px] border-[#f0f0f0] select-none" />
           <div>
@@ -133,13 +130,14 @@ const page: React.FC = () => {
             <h3 className='font-bold text-xl'>Sizes</h3>
             <div className='flex flex-row flex-wrap gap-4'>
             {["Small", "Medium", "Large", "X Large"].map((size) => (
-              <button
+                <button
                 key={size}
-                className={`px-4 py-1 rounded-3xl ${filters.size === size ? 'bg-black text-white' : 'bg-[#f0f0f0]'} hover:bg-black hover:text-white`}
+                className={`px-4 py-1 rounded-3xl ${Array.isArray(filters.size) && filters.size.includes(size) ? 'bg-black text-white' : 'bg-[#f0f0f0]'} hover:bg-black hover:text-white`}
                 onClick={() => handleSizeChange(size)}
               >
                 {size}
               </button>
+              
             ))}
           </div>
           </div>
@@ -161,7 +159,7 @@ const page: React.FC = () => {
           </div>
           <hr className="relative top-1 mx-auto w-[90%] h-[4px] border-[#f0f0f0] select-none" />
           <button className='bg-black text-white py-3 px-4 rounded-full'>Apply Filter</button>
-          {(filters.dressStyle || filters.minPrice > 10 || filters.maxPrice < 1000) && (
+          {(filters.dressStyle || filters.minPrice > 10 || filters.maxPrice < 1000 || filters.color || filters.size) && (
             <button 
               onClick={() => {
                 updateFilters({
@@ -169,6 +167,8 @@ const page: React.FC = () => {
                   minPrice: 10,
                   maxPrice: 1000,
                   dressStyle: null,
+                  color: null,
+                  size: null
                 })
               }} 
               className="bg-gray-200 px-4 py-2 rounded-full mt-2 hover:bg-black hover:text-white"
@@ -189,10 +189,10 @@ const page: React.FC = () => {
               <select 
                 value={filters.sortBy} 
                 onChange={(e) => updateFilters({ sortBy: e.target.value })}
-                className="font-bold text-black ml-2 p-x-2"
+                className="font-bold text-black ml-2 p-x-2 outline-none"
               >
                 <option value="Most Popular">Most Popular</option>
-                <option value="Price: Low to High" className='appearance-none hover:bg-black'>Price: Low to High</option>
+                <option value="Price: Low to High" className='cursor-pointer appearance-none hover:bg-black'>Price: Low to High</option>
                 <option value="Price: High to Low">Price: High to Low</option>
                 <option value="Rating">Rating</option>
               </select>

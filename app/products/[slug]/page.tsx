@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import tick from '@/public/Icons/tick.svg';
 import star from '@/public/Icons/small-star.svg';
 import reviews from '@/components/Data/Reviews';
@@ -24,7 +24,7 @@ const page: React.FC<PageProps> = ({ params }) => {
   const [selectedColor, setSelectedColor] = useState<string>('');
   const [selectedSize, setSelectedSize] = useState<string>('');
   const [quantity, setQuantity] = useState(1);
-  const [selectedImage, setSelectedImage] = useState<string>('');
+  const [selectedImage, setSelectedImage] = useState<StaticImageData>('');
   const [activeSection, setActiveSection] = useState<'details' | 'reviews' | 'faqs'>('reviews');
 
   const colors = [
@@ -79,109 +79,137 @@ const page: React.FC<PageProps> = ({ params }) => {
   return (
     <section className="bg-white">
       <div className="w-[95vw] md:w-[80vw] mx-auto pt-4 flex flex-col lg:flex-row gap-8 bg-white">
-        <div className="flex flex-col-reverse lg:flex-row gap-4 justify-center items-center">
-          <div className="flex flex-row lg:flex-col gap-4 justify-center">
-            {product.otherImages && product.otherImages.map((image: string, index: number) => (
-              <Image
-                key={index}
-                src={image}
-                alt={`pic${index + 2}`}
-                width={180}
-                height={150}
-                className={`w-[124px] h-[124px] border ${selectedImage === image ? 'border-black/80' : 'border-black/20'} rounded-xl px-4 bg-[#f0f0f0] cursor-pointer`}
-                onClick={() => setSelectedImage(image)} 
-              />
-            ))}
-          </div>
-          <Image
+  {/* Image Gallery and Main Image */}
+  <div className="flex flex-col-reverse lg:flex-row gap-4 justify-center items-center">
+    {/* Other imgs */}
+    <div className="flex flex-row lg:flex-col gap-4 justify-center overflow-x-auto pb-4 lg:pb-0">
+      {product.otherImages && product.otherImages.map((image: StaticImageData, index: number) => (
+        <Image
+          key={index}
+          src={image}
+          alt={`pic${index + 2}`}
+          width={100}
+          height={100}
+          className={`w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] border ${
+            selectedImage === image ? 'border-black/80' : 'border-black/20'
+          } rounded-xl p-2 bg-[#f0f0f0] cursor-pointer`}
+          onClick={() => setSelectedImage(image)}
+        />
+      ))}
+    </div>
+    {/* Main Image */}
+    <Image
             src={selectedImage}
             alt="selected image"
             width={425}
-            className="w-[475px] h-[400px] md:w-[425px] md:h-[500px] border border-black/20 rounded-xl"
+            className="w-[475px] h-[350px] md:w-[425px] sm:h-[350px] md:h-[475px] border border-black/20 rounded-xl"
           />
-        </div>
-        <div className="flex flex-col gap-2 md:gap-4 w-[88%] md:w-full lg:w-[50%] mx-4">
-          <h2 className={`${integralCF.className} text-2xl md:text-3xl mb-6`}>
-            {product.name}
-          </h2>
-          <span className="flex gap-4">
-            <p className="font-bold text-2xl md:text-xl">
-              ${product.discountprice ? product.discountprice : product.price}
-            </p>
-            <p className="line-through text-black/20 font-bold text-2xl md:text-xl">
-              ${product.price}
-            </p>
-          </span>
-          <p className="text-[rgba(0,0,0,0.6)]">{product.description}</p>
-          <hr className="mx-auto w-full h-[4px] border-black/20 select-none mt-4 md:mt-0" />
-          <div className="py-2">
-            <h3 className="mb-2">Select Colors</h3>
-            <div className="flex flex-row gap-4">
-              {colors.map((color) => (
-                <div
-                  key={color.id}
-                  className={`w-12 h-12 rounded-full cursor-pointer select-none flex justify-center items-center ${
-                    selectedColor === color.bgColor ? 'border-4 border-gray-600' : ''
-                  }`}
-                  style={{ backgroundColor: color.bgColor }}
-                  onClick={() => handleColorClick(color.bgColor)}
-                >
-                  {selectedColor === color.bgColor && (
-                    <Image src={tick} alt="tick" className="w-5" />
-                  )}
-                </div>
-              ))}
-            </div>
+  </div>
+
+  {/* Product Details */}
+  <div className="flex flex-col gap-2 md:gap-4 w-[88%] md:w-full lg:w-[50%] mx-4">
+    {/* Product Name */}
+    <h2 className={`${integralCF.className} text-2xl md:text-3xl mb-4`}>
+      {product.name}
+    </h2>
+
+    {/* Price */}
+    <span className="flex gap-4">
+      <p className="font-bold text-2xl md:text-xl">
+        ${product.discountprice ? product.discountprice : product.price}
+      </p>
+      {product.discountprice && (
+        <p className="line-through text-black/20 font-bold text-2xl md:text-xl">
+          ${product.price}
+        </p>
+      )}
+    </span>
+
+    {/* Description */}
+    <p className="text-[rgba(0,0,0,0.6)] text-sm sm:text-base">
+      {product.description}
+    </p>
+
+    <hr className="mx-auto w-full h-[4px] border-black/20 select-none mt-4 md:mt-0" />
+
+    {/* Color Selector */}
+    <div className="py-2">
+      <h3 className="mb-2">Select Colors</h3>
+      <div className="flex flex-row gap-2 sm:gap-4 overflow-x-auto pb-4">
+        {colors.map((color) => (
+          <div
+            key={color.id}
+            className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full cursor-pointer select-none flex justify-center items-center ${
+              selectedColor === color.bgColor ? 'border-4 border-gray-600' : ''
+            }`}
+            style={{ backgroundColor: color.bgColor }}
+            onClick={() => handleColorClick(color.bgColor)}
+          >
+            {selectedColor === color.bgColor && (
+              <Image src={tick} alt="tick" className="w-4 sm:w-5" />
+            )}
           </div>
-          <hr className="mx-auto w-full h-[4px] border-black/20 select-none mt-4 md:mt-0" />
-          <div className="py-2">
-            <h3 className="mb-2">Choose Size</h3>
-            <div className="flex flex-row gap-4">
-              {sizes.map((size) => (
-                <button
-                  key={size}
-                  className={`px-4 py-2 rounded-3xl ${
-                    selectedSize === size
-                      ? 'bg-black text-white'
-                      : 'bg-[#f0f0f0] hover:bg-black hover:text-white'
-                  }`}
-                  onClick={() => handleSizeClick(size)}
-                >
-                  {size}
-                </button>
-              ))}
-            </div>
-          </div>
-          <hr className="mx-auto w-full h-[4px] border-black/20 select-none mt-4 md:mt-0" />
-          <div className="flex justify-around items-center select-none w-full">
-            <div className="flex flex-row gap-4 justify-center items-center w-[25%] md:w-[20%] bg-[#f0f0f0] rounded-3xl">
-              <button
-                className="text-4xl"
-                onClick={() =>
-                  quantity > 1 ? setQuantity(quantity - 1) : setQuantity(1)
-                }
-              >
-                -
-              </button>
-              <p className="font-bold text-xl">{quantity}</p>
-              <button
-                className="text-2xl"
-                onClick={() => setQuantity(quantity + 1)}
-              >
-                +
-              </button>
-            </div>
-            <button
-              onClick={handleAddToCart}
-              className="bg-black text-white px-4 py-3 rounded-3xl w-[40%]"
-              disabled={!selectedColor || !selectedSize}
-            >
-              Add to Cart
-            </button>
-          </div>
-        </div>
+        ))}
       </div>
-      <div className="w-screen mx-auto mt-10 select-none">
+    </div>
+
+    <hr className="mx-auto w-full h-[4px] border-black/20 select-none mt-4 md:mt-0" />
+
+    {/* Size Selector */}
+    <div className="py-2">
+      <h3 className="mb-2">Choose Size</h3>
+      <div className="flex flex-row gap-2 sm:gap-4 overflow-x-auto pb-4">
+        {sizes.map((size) => (
+          <button
+            key={size}
+            className={`px-4 py-2 rounded-3xl text-sm sm:text-base ${
+              selectedSize === size
+                ? 'bg-black text-white'
+                : 'bg-[#f0f0f0] hover:bg-black hover:text-white'
+            }`}
+            onClick={() => handleSizeClick(size)}
+          >
+            {size}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <hr className="mx-auto w-full h-[4px] border-black/20 select-none mt-4 md:mt-0" />
+
+    {/* Quantity and Add to Cart */}
+    <div className="flex justify-around items-center select-none w-full mt-4">
+      {/* Quantity Selector */}
+      <div className="flex flex-row gap-4 justify-center items-center w-[40%] sm:w-[25%] bg-[#f0f0f0] rounded-3xl">
+        <button
+          className="text-2xl sm:text-4xl"
+          onClick={() => (quantity > 1 ? setQuantity(quantity - 1) : setQuantity(1))}
+          aria-label="Decrease quantity"
+        >
+          -
+        </button>
+        <p className="font-bold text-lg sm:text-xl">{quantity}</p>
+        <button
+          className="text-xl sm:text-2xl"
+          onClick={() => setQuantity(quantity + 1)}
+          aria-label="Increase quantity"
+        >
+          +
+        </button>
+      </div>
+
+      {/* Add to Cart Button */}
+      <button
+        onClick={handleAddToCart}
+        className="bg-black text-white px-4 py-3 rounded-3xl w-[55%] sm:w-[40%] text-sm sm:text-base"
+        aria-label="Add to cart"
+      >
+        Add to Cart
+      </button>
+    </div>
+  </div>
+</div>
+    <div className="w-screen mx-auto mt-10 select-none">
   <span className="w-[80%] mx-auto flex justify-around items-center gap-4">
     <h3
       className={`text-lg border-b-2 ${

@@ -37,7 +37,7 @@ const Card = ({
             alt={name}
             width={290}
             height={298}
-            className="h-[240px] mb-[5px] w-[290px] md:h-[298px] sm-[240px] object-cover rounded-[20px] object-center transition-transform duration-300 hover:scale-105"
+            className="h-[240px] mb-[5px] w-[290px] md:h-[298px] sm-[240px] object-cover rounded-[20px] object-center transition-transform duration-300 hover:scale-105 user-drag-none"
             priority
           />
           {discountprice > 0 && (

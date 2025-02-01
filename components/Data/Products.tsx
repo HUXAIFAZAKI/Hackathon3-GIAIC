@@ -42,7 +42,7 @@ export const NewProducts: Products[] = [
     category: "T-Shirts",
     dressStyle: ["Casual"],
     size:["Small", "Medium", "Large", "X Large"],
-    color: ["Red", "Blue", "Green"]
+    color: ["red", "blue", "green"]
   },
   {
     id: "33d5e542-4ebc-48ca-9e8e-feb7aa24dc65",
@@ -57,7 +57,7 @@ export const NewProducts: Products[] = [
     category: "Jeans",
     dressStyle: ["Casual"],
     size: ["Small", "Medium", "Large", "X Large"],
-    color: ["Red", "Blue", "Green"],
+    color: ["red", "blue", "green"],
   },
   {
     id: "28572613-8ce5-4e24-b67f-931f50a2c9ba",
@@ -71,8 +71,8 @@ export const NewProducts: Products[] = [
     description: "A classic checkered shirt with a button-down collar, perfect for casual or semi-formal occasions.",
     category: "Shirts",
     dressStyle: ["Casual", "Formal"],
-    size: ["S", "M", "L", "XL"],
-    color: ["Red", "Blue", "Black"]
+    size: ["Small", "Medium", "Large"],
+    color: ["red", "blue", "black"]
   },
   {
     id: "28f63ceb-daf0-40b2-8df0-41a4cec26944",
@@ -86,8 +86,8 @@ export const NewProducts: Products[] = [
     description: "A comfortable cotton t-shirt with contrast striped sleeves, offering a sporty yet casual look.",
     category: "T-Shirts",
     dressStyle: ["Casual", "Gym"],
-    size: ["S", "M", "L", "XL"],
-    color: ["Red", "Green"],
+    size: ["Small", "Medium", "Large", "X Large"],
+    color: ["red", "green"],
   },
   {
     id: "f56dce2c-347f-4c89-bbbe-b4b907a7e5f5",
@@ -101,8 +101,8 @@ export const NewProducts: Products[] = [
     description: "A soft and warm flannel shirt, perfect for layering during cooler months.",
     category: "Shirts",
     dressStyle: ["Casual"],
-    size: ["S", "M", "L", "XL"],
-    color: ["Red", "Blue", "Green"]
+    size: ["Small", "Medium", "Large"],
+    color: ["red", "blue", "black"]
   },
   {
     id: "0a93d4a7-2ed6-4e38-858f-b462c58251c6",
@@ -116,8 +116,8 @@ export const NewProducts: Products[] = [
     description: "A classic denim jacket with a vintage wash, versatile enough for casual or semi-formal outfits.",
     category: "Jackets",
     dressStyle: ["Casual"],
-    size: ["S", "M", "L", "XL"],
-    color: ["Blue"]
+    size: ["Small", "Medium", "Large"],
+    color: ["blue"]
   },
   {
     id: "e8b85c28-3329-41e3-b6f4-8b14f0132bfb",
@@ -131,8 +131,8 @@ export const NewProducts: Products[] = [
     description: "Stylish cargo pants with multiple pockets and a relaxed fit, perfect for casual outings.",
     category: "Pants",
     dressStyle: ["Casual"],
-    size: ["S", "M", "L", "XL"],
-    color: ["Black"]
+    size: ["Small", "Medium", "Large"],
+    color: ["black"]
   },
   {
     id: "db017bb0-bfff-4789-b7a4-b4b56c2ecf7b",
@@ -146,8 +146,8 @@ export const NewProducts: Products[] = [
     description: "A comfortable hoodie with a classic design, perfect for layering or casual wear.",
     category: "Hoodies",
     dressStyle: ["Casual"],
-    size: ["Small", "M", "L", "XL"],
-    color: ["Black"]
+    size: ["Small", "Medium", "Large"],
+    color: ["black"]
   }
 ];
 
@@ -163,7 +163,9 @@ export const TopProducts: Products[] = [
     rating: 4,
     description: "An elegant vertically striped shirt that pairs well with both formal and casual outfits.",
     category: "Shirts",
-    dressStyle: ["Formal"]
+    dressStyle: ["Formal"],
+    size: ["Small", "Medium", "Large"],
+    color: ["red", "blue", "black"]
   },
   {
     id: "3375ddd7-0ff0-4522-8534-fe93fad85600",
@@ -176,7 +178,9 @@ export const TopProducts: Products[] = [
     rating: 3,
     description: "A bold graphic t-shirt featuring a 'Courage' design, perfect for streetwear lovers.",
     category: "T-Shirts",
-    dressStyle: ["Casual", "Gym"]
+    dressStyle: ["Casual", "Gym"],
+    size: ["Small", "Medium", "Large"],
+    color: ["red", "blue", "black"]
   },
   {
     id: "f4a6a760-064b-46b9-a8cd-4a4146f81c37",
@@ -189,7 +193,9 @@ export const TopProducts: Products[] = [
     rating: 5,
     description: "Relaxed fit Bermuda shorts made with breathable fabric, ideal for summer outings.",
     category: "Shorts",
-    dressStyle: ["Casual"]
+    dressStyle: ["Casual"],
+    size: ["Small", "Medium", "Large"],
+    color: ["red", "blue", "black"]
   },
   {
     id: "2e9705a7-64c4-4918-ab08-26d3cc1ead1e",
@@ -202,7 +208,9 @@ export const TopProducts: Products[] = [
     rating: 4,
     description: "Faded skinny jeans with a comfortable stretch, offering a trendy and modern aesthetic.",
     category: "Jeans",
-    dressStyle: ["Casual"]
+    dressStyle: ["Casual"],
+    size: ["Small", "Medium", "Large"],
+    color: ["red", "blue", "black"]
   },
   {
     id: "db01f4ff-3f0e-4b92-bd1e-b324d6a5d279",
@@ -216,6 +224,8 @@ export const TopProducts: Products[] = [
     description: "A simple, classic crew-neck t-shirt, a must-have for any wardrobe.",
     category: "T-Shirts",
     dressStyle: ["Casual, Formal"]
+    ,size: ["Small", "Medium", "Large"],
+    color: ["blue", "black"]
   },
   {
     id: "4ab5cd6b-7178-46d4-a2d3-54e9c6dbe716",
@@ -228,7 +238,9 @@ export const TopProducts: Products[] = [
     rating: 5,
     description: "A stylish and warm parka coat, perfect for winter weather.",
     category: "Jackets",
-    dressStyle: ["Casual"]
+    dressStyle: ["Casual"],
+    size: ["Small", "Medium", "Large", "X Large"],
+    color: ["blue", "black"]
   },
   {
     id: "9b1d6f95-4391-43f9-bb4a-4e2633d6c106",
@@ -241,7 +253,9 @@ export const TopProducts: Products[] = [
     rating: 5,
     description: "A high-quality leather jacket for a bold, timeless look.",
     category: "Jackets",
-    dressStyle: ["Casual", "Gym"]
+    dressStyle: ["Casual", "Gym"],
+    size: ["Small", "Medium", "Large", "X Large"],
+    color: ["blue", "black","slate"]
   }
 ];
 

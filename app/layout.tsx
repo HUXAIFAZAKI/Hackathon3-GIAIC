@@ -4,6 +4,8 @@ import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import { satoshi } from "@/style/fonts";
 import { CartProvider } from "@/components/CartContext"; 
+import CustomCursor from "@/components/Cursor";
+
 
 export const metadata: Metadata = {
   title: "Shop.co",
@@ -21,6 +23,7 @@ export default function RootLayout({
         className={`${satoshi.className} antialiased`}
       >
         <CartProvider>
+          <CustomCursor/>
           <Header />
             <main>
               {children}
