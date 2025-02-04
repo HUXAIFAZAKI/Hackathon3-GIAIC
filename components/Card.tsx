@@ -40,7 +40,7 @@ const Card = ({
             className="h-[240px] mb-[5px] w-[290px] md:h-[298px] sm-[240px] object-cover rounded-[20px] object-center transition-transform duration-300 hover:scale-105 user-drag-none"
             priority
           />
-          {discountprice > 0 && (
+          {discountPercentage > 0 && (
             <span className="absolute top-2 left-2 bg-[#FF3333]/75 text-white text-xs font-bold py-1 px-3 rounded-full">
               {discountPercentage ? `${discountPercentage.toFixed(0)}% OFF` : 'Sale'}
             </span>
@@ -49,7 +49,6 @@ const Card = ({
 
         <div className="flex flex-col w-full">
           <h3 className="font-semibold text-lg mb-1 line-clamp-2">{name}</h3>
-
           <div className="flex items-center mb-2">
             {[...Array(Math.min(rating, 5))].map((_, index) => (
               <Image key={index} src={star} alt="star" className="w-4 h-4 mr-1" />
@@ -58,7 +57,7 @@ const Card = ({
 
           <div className="flex items-center gap-2">
             <span className="text-xl font-semibold text-gray-900">
-              ${finalPrice}
+              ${finalPrice.toFixed(0)}
             </span>
             {discountprice > 0 && (
               <span className="text-base font-medium text-gray-500 line-through">

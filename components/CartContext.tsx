@@ -1,4 +1,5 @@
 "use client"
+import { StaticImageData } from 'next/image';
 import React, { createContext, useContext, useState, useMemo, ReactNode, useEffect } from 'react';
 
 interface CartItem {
@@ -8,7 +9,7 @@ interface CartItem {
   color: string;
   price: number; 
   quantity: number;
-  img: string;
+  img: StaticImageData;
 }
 
 interface CartContextType {

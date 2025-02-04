@@ -4,15 +4,16 @@ import Image from 'next/image'
 import HeroImage from "../public/Images/hero.png";
 import Brands from './Brands';
 import { integralCF } from '@/style/fonts'
+import Link from 'next/link';
 
 const HeroSection: React.FC = () => {
   return (
     <>
-      <div className='flex flex-col md:flex-row items-center justify-center md:justify-around w-screen md:h-screen bg-[#f0f0f0]'>
-        <div className='flex flex-col gap-4 lg:gap-10 m-4 md:w-[25%] lg:w-[35%]' >
+      <div className='flex flex-col md:flex-row items-center justify-center md:justify-around w-screen md:h-screen bg-[#f0f0f0] select-none'>
+        <div className='flex flex-col gap-4 lg:gap-10 m-4 md:w-[25%] lg:w-[35%] select-none' >
           <h1 className={`${integralCF.className} font-bold text-4xl lg:text-6xl`}>FIND CLOTHES THAT MATCHES YOUR STYLE</h1>
           <p className=''>Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.</p>
-          <button className='bg-black text-white py-4 px-4 rounded-full w-full lg:w-[50%]'>Shop Now</  button>
+          <Link href={'/products'} className='bg-black text-white py-4 px-4 rounded-full w-full lg:w-[50%] text-center md:text-lg hover:bg-white hover:text-black border border-black hover:shadow-lg'>Shop Now</Link>
           <div className='flex md:hidden mx-8'>
             <div>
               <h3 className='font-bold text-2xl'>500</h3>

@@ -4,13 +4,14 @@ import Image, { StaticImageData } from 'next/image';
 import tick from '@/public/Icons/tick.svg';
 import star from '@/public/Icons/small-star.svg';
 import reviews from '@/components/Data/Reviews';
-import Card from '@/components/Card';
 import { integralCF } from '@/style/fonts';
-import { allProducts } from '@/components/Data/Products';
 import { useCart } from '@/components/CartContext';
 import { faqs } from '@/components/Data/FAQs';
 import { FaQuestionCircle, FaTag } from 'react-icons/fa';
 import FAQ from '@/components/FAQ';
+import { product } from '@/typings';
+import MightLike from '@/components/MightLike';
+
 
 interface PageProps {
   params: {
@@ -19,12 +20,22 @@ interface PageProps {
 }
 
 const page: React.FC<PageProps> = ({ params }) => {
+  const [products, setProducts] = useState<product[]>([]);
+  useEffect(() => {
+      const fetchProducts = async () => {
+        const res = await fetch('http://localhost:3000/api/products'); 
+        const data = await res.json();
+        setProducts(data);
+      };
+      fetchProducts();
+  }, []);
+  // console.log('products',products)
   const { slug } = params;
   const { addToCart } = useCart();
   const [selectedColor, setSelectedColor] = useState<string>('');
   const [selectedSize, setSelectedSize] = useState<string>('');
   const [quantity, setQuantity] = useState(1);
-  const [selectedImage, setSelectedImage] = useState<StaticImageData>('');
+  // const [selectedImage, setSelectedImage] = useState<StaticImageData>('');
   const [activeSection, setActiveSection] = useState<'details' | 'reviews' | 'faqs'>('reviews');
 
   const colors = [
@@ -34,23 +45,12 @@ const page: React.FC<PageProps> = ({ params }) => {
   ];
   const sizes = ['Small', 'Medium', 'Large', 'X Large'];
 
-  const product = allProducts.find((product) => product.id.toString() === slug);
+  const product:product = products.find((p) => p._id === slug);
+  
   if (!product) {
     return <h1 className="text-center text-red-500 text-2xl">Product Not Found</h1>;
   }
-
-  const excludedProductIds = [product.id.toString()];
-  const [mightLike, setMightLike] = useState<any[]>([]);
-
-  useEffect(() => {
-    const filteredProducts = allProducts.filter(
-      (product) => !excludedProductIds.includes(product.id.toString())
-    );
-    const shuffledProducts = filteredProducts.sort(() => Math.random() - 0.5).slice(0, 4);
-    setMightLike(shuffledProducts);
-    setSelectedImage(product.image);
-  }, []);
-
+  const excludedProductIds = [product._id.toString()];
   const handleColorClick = (color: string) => {
     setSelectedColor(color);
   };
@@ -65,13 +65,13 @@ const page: React.FC<PageProps> = ({ params }) => {
       return;
     }
     const cartItem = {
-      id: product.id.toString(),
+      id: product._id.toString(),
       name: product.name,
       selectedSize,
       selectedColor,
-      price: product.discountprice ? product.discountprice : product.price,
+      price: product.discountPrice ? product.discountPrice : product.price,
       quantity,
-      img: selectedImage,
+      img: product.imageUrl,
     };
     addToCart(cartItem);
   };
@@ -79,11 +79,11 @@ const page: React.FC<PageProps> = ({ params }) => {
   return (
     <section className="bg-white">
       <div className="w-[95vw] md:w-[80vw] mx-auto pt-4 flex flex-col lg:flex-row gap-8 bg-white">
-  {/* Image Gallery and Main Image */}
-  <div className="flex flex-col-reverse lg:flex-row gap-4 justify-center items-center">
+    {/* Image Gallery and Main Image */}
+    <div className="flex flex-col-reverse lg:flex-row gap-4 justify-center items-center">
     {/* Other imgs */}
     <div className="flex flex-row lg:flex-col gap-4 justify-center overflow-x-auto pb-4 lg:pb-0">
-      {product.otherImages && product.otherImages.map((image: StaticImageData, index: number) => (
+      {/* {product.otherImages && product.otherImages.map((image: StaticImageData, index: number) => (
         <Image
           key={index}
           src={image}
@@ -95,13 +95,14 @@ const page: React.FC<PageProps> = ({ params }) => {
           } rounded-xl p-2 bg-[#f0f0f0] cursor-pointer`}
           onClick={() => setSelectedImage(image)}
         />
-      ))}
+      ))} */}
     </div>
     {/* Main Image */}
     <Image
-            src={selectedImage}
+            src={product.imageUrl}
             alt="selected image"
             width={425}
+            height={450}
             className="w-[475px] h-[350px] md:w-[425px] sm:h-[350px] md:h-[475px] border border-black/20 rounded-xl"
           />
   </div>
@@ -116,9 +117,9 @@ const page: React.FC<PageProps> = ({ params }) => {
     {/* Price */}
     <span className="flex gap-4">
       <p className="font-bold text-2xl md:text-xl">
-        ${product.discountprice ? product.discountprice : product.price}
+        ${product.discountPrice ? product.discountPrice.toFixed(0) : product.price}
       </p>
-      {product.discountprice && (
+      {product.discountPrice && (
         <p className="line-through text-black/20 font-bold text-2xl md:text-xl">
           ${product.price}
         </p>
@@ -312,20 +313,7 @@ const page: React.FC<PageProps> = ({ params }) => {
         >
           YOU MIGHT ALSO LIKE
         </h2>
-        <div className="flex flex-wrap justify-center flex-shrink-0 gap-[8px]">
-          {mightLike.map((product) => (
-            <Card
-              key={product.id}
-              id={product.id}
-              name={product.name}
-              image={product.image}
-              price={product.price}
-              discountprice={product.discountprice}
-              discountPercentage={product.discountPercentage ?? 0}
-              rating={product.rating}
-            />
-          ))}
-        </div>
+        <MightLike excludedProductIds={excludedProductIds}/>
       </div>
     </section>
   );

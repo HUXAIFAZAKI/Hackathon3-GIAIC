@@ -57,7 +57,7 @@ const CartPage: React.FC = () => {
                       ✕
                     </button>
 
-                    <Image src={item.img} alt={item.name} width={130} className="rounded-xl" />
+                    <Image src={item.img} alt={item.name} width={130} height={130} className="rounded-xl" />
 
                     <div className="flex flex-col w-full">
                       <h3 className="text-lg font-bold text-gray-900">{item.name}</h3>

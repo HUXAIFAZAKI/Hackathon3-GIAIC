@@ -1,18 +1,65 @@
 "use client"
-import React, {useState} from 'react'
+import React, {useState, useEffect,useRef} from 'react'
 import Link from 'next/link';
 import { integralCF } from '@/style/fonts';
 import { useCart } from '../CartContext';
 import { CloseIcon, CartIcon, SearchIcon, ProfileIcon, SearchIcon2 } from './Icons';
 import styles from './Header.module.css'
+import { useRouter } from "next/navigation";
 
 const Header: React.FC = () => {
+  const router = useRouter();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [products, setProducts] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [showDropdown, setShowDropdown] = useState(false);
   const { cartCount } = useCart();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const searchRef = useRef<HTMLDivElement>(null);
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/api/products");
+        const data = await res.json();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+    fetchProducts();
+  }, []);
+  useEffect(() => {
+    if (searchQuery.trim()) {
+      const filtered = products.filter((product) =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredProducts(filtered);
+      setShowDropdown(filtered.length > 0);
+    } else {
+      setShowDropdown(false);
+    }
+  }, [searchQuery, products]);
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/search?q=${searchQuery.trim()}`);
+      setShowDropdown(false);
+    }
+  };
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   return (
     <>
       <header className='w-screen bg-white'>  
@@ -45,11 +92,42 @@ const Header: React.FC = () => {
         <span className='select-none p-4 cursor-pointer rounded-full'>
           <SearchIcon/>
         </span>
-        <input type="search" placeholder='Search for products...' 
-        id="search"
-        className='bg-[#f0f0f0] p-2 min-w-[80%] w-full flex-grow-1 text-left rounded-full focus:outline-none outline-none'
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}/>
+        <div ref={searchRef} className="relative w-full min-w-[200px] select-none">
+        <form onSubmit={handleSearch} className="flex items-center rounded-full bg-gray-100">
+          <input
+            type="text"
+            placeholder="Search for products..."
+            className="bg-[#f0f0f0] p-2 min-w-[80%] w-full flex-grow-1 text-left rounded-full focus:outline-none outline-none"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onFocus={() => setShowDropdown(true)}
+          />
+        </form>
+
+        {/* Search Dropdown */}
+        {showDropdown && (
+          <ul className="absolute w-full bg-white border rounded-lg shadow-lg mt-2 max-h-60 overflow-y-auto z-[999]">
+            {filteredProducts.slice(0, 5).map((product) => (
+              <li key={product._id} className="p-2 hover:bg-gray-100 cursor-pointer ">
+                <Link
+                  href={`/products/${product._id}`}
+                  className="flex items-center gap-2"
+                  onClick={() => setShowDropdown(false)}
+                >
+                  <img src={product.imageUrl} alt={product.name} className="w-10 h-10 object-cover rounded border border-black/10" />
+                  <div>
+                    <p className="font-semibold">{product.name}</p>
+                    <p className="text-sm text-gray-500">${product.discountPrice? product.discountPrice.toFixed(0) : product.price}</p>
+                  </div>
+                </Link>
+              </li>
+            ))}
+            {filteredProducts.length === 0 && (
+              <li className="p-2 text-gray-500">No results found</li>
+            )}
+          </ul>
+        )}
+        </div>
       </div>
       
       <div className='flex justify-center items-center gap-4'>
@@ -69,7 +147,7 @@ const Header: React.FC = () => {
     </div>
     <hr className="relative top-1 mx-auto w-[90%] h-[4px] border-[#f0f0f0] select-none" />
     </header>
-    <div className={`sidebar ${isMobileMenuOpen ? 'translate-x-0' : styles.hide} z-[999] w-full h-screen fixed top-0 bg-white text-black duration-200 ease-in-out`}>
+    <div className={`sidebar ${isMobileMenuOpen ? 'translate-x-0' : styles.hide} w-full h-screen fixed top-0 bg-white text-black duration-200 ease-in-out`}>
         <div className='flex items-center fixed top-10 w-full'>
           <h1 className={`${integralCF.className} font-bold text-4xl h-[50px] w-full flex justify-center`}>
             <Link href={'/'}>SHOP.CO</Link>

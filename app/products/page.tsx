@@ -1,5 +1,5 @@
 "use client"
-import React, {useState,useMemo} from 'react'
+import React, {useState,useEffect,useMemo} from 'react'
 import Image from 'next/image'
 import filterIcon from '@/public/Icons/filters.svg'
 import LArrow from '@/public/Icons/arrowLeft.svg'
@@ -7,15 +7,25 @@ import RArrow from '@/public/Icons/arrowRight.svg'
 import navArrow from '@/public/Icons/navArrow.svg'
 import tick from "@/public/Icons/tick.svg"
 import Card from '@/components/Card'
-import { allProducts } from '@/components/Data/Products'
+import { product } from '@/typings'
 
 const page: React.FC = () => {
+  const [products, setProducts] = useState<product[]>([]);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const res = await fetch('http://localhost:3000/api/products'); 
+      const data = await res.json();
+      setProducts(data);
+    };
+    fetchProducts();
+  }, []); 
+ 
   const [showFilters, setShowFilters] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
 
   const [filters, setFilters] = useState({
-    minPrice: 10,
+    minPrice: 100,
     maxPrice: 1000,
     category: null,
     dressStyle: null,
@@ -46,7 +56,7 @@ const page: React.FC = () => {
   };
   
   const filteredProducts = useMemo(() => {
-    return allProducts.filter(product =>
+    return products.filter(product =>
       (product.discountprice ? product.discountprice : product.price) >= filters.minPrice &&
       (product.discountprice ? product.discountprice : product.price) <= filters.maxPrice &&
       (filters.category ? product.category === filters.category : true) && 
@@ -65,7 +75,7 @@ const page: React.FC = () => {
           return 0;
       }
     });
-  }, [filters,allProducts]);
+  }, [filters,products]);
 
   const currentProducts = useMemo(() => {
     return filteredProducts.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
@@ -85,18 +95,21 @@ const page: React.FC = () => {
           <h2 className='font-bold text-2xl'>Filters</h2>
           <hr className="relative top-1 mx-auto w-[90%] h-[4px] border-[#f0f0f0] select-none" />
           <div>
-            {["T-Shirts", "Shirts", "Jeans", "Hoodies", "Jackets"].map((category) => (
-              <span 
-                key={category} 
-                className='flex justify-between items-center cursor-pointer select-none'
-                onClick={() => updateFilters({ category: category })}
-              >
-                <p className={`cursor-pointer ${filters.category === category ? "text-black font-bold" : "text-gray-500"}`}>
-                    {category}
-                </p>
-                <Image src={navArrow} alt='arrow' className={`w-2 duration-200 ${filters.category === category ? "block" : "hidden"}`} />
-              </span>
-            ))}
+          <div>
+          {["tshirt", "shirt", "jeans", "hoodie", "jacket"].map((category) => (
+            <span 
+              key={category} 
+              className='flex justify-between items-center cursor-pointer select-none'
+              onClick={() => updateFilters({ category: category.replace('-', '').toLowerCase() })}
+            >
+              <p className={`cursor-pointer ${filters.category === category ? "text-black font-bold" : "text-gray-500"}`}>
+                {category.charAt(0).toUpperCase() + category.slice(1)} {/* Capitalize the category name */}
+              </p>
+              <Image src={navArrow} alt='arrow' className={`w-2 duration-200 ${filters.category === category ? "block" : "hidden"}`} />
+            </span>
+          ))}
+          </div>
+
           </div>
           <hr className="relative top-1 mx-auto w-[90%] h-[4px] border-[#f0f0f0] select-none" />
           <div>
@@ -105,8 +118,8 @@ const page: React.FC = () => {
               <span>${filters.minPrice}</span>
               <span>${filters.maxPrice}</span>
             </div>
-            <input type="range" min="10" max="1000" value={filters.minPrice} onChange={handleMinChange} className='w-full appearance-none bg-transparent [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:bg-black/25 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-[15px] [&::-webkit-slider-thumb]:w-[15px] [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-black cursor-move w-full' />
-            <input type="range" min="10" max="1000" value={filters.maxPrice} onChange={handleMaxChange} className='w-full appearance-none bg-transparent [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:bg-black/25 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-[15px] [&::-webkit-slider-thumb]:w-[15px] [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-black cursor-move w-full' />
+            <input type="range" min="100" max="1000" value={filters.minPrice} onChange={handleMinChange} className='w-full appearance-none bg-transparent [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:bg-black/25 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-[15px] [&::-webkit-slider-thumb]:w-[15px] [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-black cursor-move w-full' />
+            <input type="range" min="100" max="1000" value={filters.maxPrice} onChange={handleMaxChange} className='w-full appearance-none bg-transparent [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:bg-black/25 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-[15px] [&::-webkit-slider-thumb]:w-[15px] [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-black cursor-move w-full' />
           </div>
           <hr className="relative top-1 mx-auto w-[90%] h-[4px] border-[#f0f0f0] select-none" />
           <div>
@@ -350,7 +363,7 @@ const page: React.FC = () => {
 
         <div className='flex flex-row md:gap-x-10 flex-wrap justify-center'>
           {currentProducts.map((product) => (
-            <Card id={product.id} name={product.name} image={product.image} price={product.price} discountprice={product.discountprice} discountPercentage={product.discountPercentage} rating={product.rating} />
+            <Card id={product._id} name={product.name} image={product.imageUrl} price={product.price} discountprice={product.discountPrice} discountPercentage={product.discountPercent} rating={product.rating} />
           ))}
         </div>
 
@@ -360,7 +373,7 @@ const page: React.FC = () => {
         <div className="flex justify-between w-[90%] mx-auto">
   <button
     aria-label="Previous page"
-    className="border-black/20 border rounded-xl py-2 px-4 flex justify-center items-center gap-2"
+    className="border-black/20 hover:border-black/50 border rounded-xl py-2 px-4 flex justify-center items-center gap-2"
     onClick={() => handlePageChange(currentPage - 1)}
     disabled={currentPage === 1}
   >
@@ -372,7 +385,7 @@ const page: React.FC = () => {
   </span>
   <button
     aria-label="Next page"
-    className="border-black/20 border rounded-xl py-2 px-4 flex justify-center items-center gap-2"
+    className="border-black/20 hover:border-black/50 border rounded-xl py-2 px-4 flex justify-center items-center gap-2"
     onClick={() => handlePageChange(currentPage + 1)}
     disabled={currentPage === totalPages}
   >
