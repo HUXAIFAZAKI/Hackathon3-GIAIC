@@ -8,8 +8,12 @@ type product = {
   discountPercent: number;
   discountPrice: number;
   isNew: boolean;
-  colors: string[];
+  colors: {
+    id: string;
+    bgColor: string;
+  }[];
   sizes: string[];
+  dressStyle: string[];
   rating: number;
 };
 

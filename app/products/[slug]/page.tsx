@@ -23,7 +23,7 @@ const page: React.FC<PageProps> = ({ params }) => {
   const [products, setProducts] = useState<product[]>([]);
   useEffect(() => {
       const fetchProducts = async () => {
-        const res = await fetch('/api/products'); 
+        const res = await fetch('/api/products', { next: { revalidate: 0 } }); 
         const data = await res.json();
         setProducts(data);
       };
@@ -37,13 +37,6 @@ const page: React.FC<PageProps> = ({ params }) => {
   const [quantity, setQuantity] = useState(1);
   // const [selectedImage, setSelectedImage] = useState<StaticImageData>('');
   const [activeSection, setActiveSection] = useState<'details' | 'reviews' | 'faqs'>('reviews');
-
-  const colors = [
-    { id: 'color1', bgColor: '#4F4631' },
-    { id: 'color2', bgColor: '#314F4A' },
-    { id: 'color3', bgColor: '#31344F' },
-  ];
-  const sizes = ['Small', 'Medium', 'Large', 'X Large'];
 
   const product:product = products.find((p) => p._id === slug);
   
@@ -137,21 +130,37 @@ const page: React.FC<PageProps> = ({ params }) => {
     <div className="py-2">
       <h3 className="mb-2">Select Colors</h3>
       <div className="flex flex-row gap-2 sm:gap-4 overflow-x-auto pb-4">
-        {colors.map((color) => (
-          <div
-            key={color.id}
-            className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full cursor-pointer select-none flex justify-center items-center ${
-              selectedColor === color.bgColor ? 'border-4 border-gray-600' : ''
-            }`}
-            style={{ backgroundColor: color.bgColor }}
-            onClick={() => handleColorClick(color.bgColor)}
-          >
-            {selectedColor === color.bgColor && (
-              <Image src={tick} alt="tick" className="w-4 sm:w-5" />
-            )}
-          </div>
-        ))}
-      </div>
+        {product.colors ? (
+        product.colors.map((color) => (
+      <div
+      key={color.id}
+      className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full cursor-pointer select-none flex justify-center items-center transition-all ${
+      selectedColor === color.bgColor
+      ? 'border-4 border-gray-600'
+      : 'border border-transparent' 
+      }`}
+      style={{
+        backgroundColor: color.bgColor,
+        // If color is white, add a light border, otherwise don't
+        border: color.bgColor === 'White' 
+          ? selectedColor === color.bgColor 
+            ? '4px solid #ccc'  // For selected white color
+            : '1px solid #ccc'  // For non-selected white color
+          : '', // No border for other colors
+      }}
+    onClick={() => handleColorClick(color.bgColor)}
+    >
+  {selectedColor === color.bgColor && (
+    <Image src={tick} alt="tick" className="w-4 sm:w-5" />
+  )}
+</div>
+
+    ))
+  ) : (
+    <p>Color not available</p>
+  )}
+</div>
+
     </div>
 
     <hr className="mx-auto w-full h-[4px] border-black/20 select-none mt-4 md:mt-0" />
@@ -160,7 +169,7 @@ const page: React.FC<PageProps> = ({ params }) => {
     <div className="py-2">
       <h3 className="mb-2">Choose Size</h3>
       <div className="flex flex-row gap-2 sm:gap-4 overflow-x-auto pb-4">
-        {sizes.map((size) => (
+        {product.sizes? (product.sizes.map((size) => (
           <button
             key={size}
             className={`px-4 py-2 rounded-3xl text-sm sm:text-base ${
@@ -171,8 +180,8 @@ const page: React.FC<PageProps> = ({ params }) => {
             onClick={() => handleSizeClick(size)}
           >
             {size}
-          </button>
-        ))}
+          </button>)
+        )): (<p>Size not available</p>) }
       </div>
     </div>
 

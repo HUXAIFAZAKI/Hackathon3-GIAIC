@@ -12,12 +12,12 @@ export async function GET() {
       discountPercent,
       discountPrice,
       isNew,
-      colors,
-      sizes,
-      rating
+      colors[],
+      sizes[],
+      dressStyle[],
+      rating,
     }`;
-
-    const products = await client.fetch(query);
+    const products = await client.fetch(query, {}, { cache: "no-cache" });
     return new Response(JSON.stringify(products), {
       status: 200,
       headers: { "Content-Type": "application/json" },

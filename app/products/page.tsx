@@ -30,7 +30,7 @@ const page: React.FC = () => {
     category: null,
     dressStyle: null,
     sortBy: 'Most Popular',
-    color: null,
+    color: [],
     size: [],
   });
 
@@ -45,7 +45,13 @@ const page: React.FC = () => {
   const handleMaxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     updateFilters({ maxPrice: Number(e.target.value) });
   };
-
+  const handleColorChange = (color: string) => {
+    updateFilters({
+      color: filters.color.includes(color)
+        ? filters.color.filter((c) => c !== color)
+        : [...filters.color, color]
+    });
+  };
   const handleSizeChange = (size: string) => {
     setFilters((prev) => ({
       ...prev,
@@ -61,9 +67,11 @@ const page: React.FC = () => {
       (product.discountprice ? product.discountprice : product.price) <= filters.maxPrice &&
       (filters.category ? product.category === filters.category : true) && 
       (filters.dressStyle ? product.dressStyle?.includes(filters.dressStyle) : true) &&
-      (filters.size?.length ? filters.size.some(size => product.size?.includes(size)) : true) &&
-      (filters.color ? product.color?.some(c => c === filters.color) : true)
-    ).sort((a, b) => {
+      (filters.size.length > 0 
+        ? filters.size.some(size => product.sizes && product.sizes.includes(size))
+        : true) &&
+      (filters.color.length ? product.colors?.some(c => filters.color.includes(c.id)) : true)
+      ).sort((a, b) => {
       switch (filters.sortBy) {
         case 'Price: Low to High':
           return (a.discountprice || a.price) - (b.discountprice || b.price);
@@ -109,7 +117,6 @@ const page: React.FC = () => {
             </span>
           ))}
           </div>
-
           </div>
           <hr className="relative top-1 mx-auto w-[90%] h-[4px] border-[#f0f0f0] select-none" />
           <div>
@@ -125,18 +132,27 @@ const page: React.FC = () => {
           <div>
             <h3 className='font-bold text-xl'>Colors</h3>
             <div className='flex gap-2 flex-wrap'>
-                {["red", "green", "blue", "yellow", "orange", "black", "violet", "pink", "slate"].map(color => (
-                  <div 
-                  key={color} 
-                  className={`w-8 h-8 rounded-full cursor-pointer select-none flex justify-center items-center ${filters.color === color ? "border-2 border-black" : ""}`}
-                  style={{ backgroundColor: color }}
-                  onClick={() => updateFilters({ color: filters.color === color ? null : color })}
-                >
-                  {filters.color === color && <Image src={tick} alt='tick' className='w-4 h-4' />}
-                </div>
-                
-                ))}
-            </div>
+  {["red", "green", "blue", "yellow", "orange", "black", "violet", "pink", "slate"].map(color => (
+    <div 
+      key={color} 
+      className={`w-8 h-8 rounded-full cursor-pointer select-none flex justify-center items-center ${filters.color.includes(color) ? "border-2 border-black" : ""}`}
+      style={{ backgroundColor: color }}
+      onClick={() => {
+        if (filters.color.includes(color)) {
+          updateFilters({ color: filters.color.filter(c => c !== color) });
+        } else {
+         
+          updateFilters({ color: [...filters.color, color] });
+        }
+      }}
+    >
+      {filters.color.includes(color) && <Image src={tick} alt='tick' className='w-4 h-4' />}
+    </div>
+  ))}
+</div>
+
+
+            
           </div>
           <hr className="relative top-1 mx-auto w-[90%] h-[4px] border-[#f0f0f0] select-none" />
           <div>
@@ -256,7 +272,7 @@ const page: React.FC = () => {
           </div>
           <input
             type="range"
-            min="10"
+            min="100"
             max="1000"
             value={filters.minPrice}
             onChange={handleMinChange}
@@ -264,7 +280,7 @@ const page: React.FC = () => {
           />
           <input
             type="range"
-            min="10"
+            min="100"
             max="1000"
             value={filters.maxPrice}
             onChange={handleMaxChange}

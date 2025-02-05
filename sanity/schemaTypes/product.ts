@@ -59,7 +59,15 @@ export default defineType({
       name: "colors",
       title: "Colors",
       type: "array",
-      of: [{ type: "string" }],
+      of: [
+        {
+          type: "object",
+          fields: [
+            { name: "id", title: "Color ID", type: "string" },
+            { name: "bgColor", title: "Background Color", type: "string" }, // Store hex color values
+          ],
+        },
+      ],
     },
     {
       name: "sizes",
