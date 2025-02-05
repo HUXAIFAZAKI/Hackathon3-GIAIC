@@ -70,7 +70,7 @@ const Shopping: React.FC = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const res = await fetch("http://localhost:3000/api/products");
+      const res = await fetch("/api/products");
       const data = await res.json();
       setProducts(data);
     };

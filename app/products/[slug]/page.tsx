@@ -23,7 +23,7 @@ const page: React.FC<PageProps> = ({ params }) => {
   const [products, setProducts] = useState<product[]>([]);
   useEffect(() => {
       const fetchProducts = async () => {
-        const res = await fetch('http://localhost:3000/api/products'); 
+        const res = await fetch('/api/products'); 
         const data = await res.json();
         setProducts(data);
       };
@@ -103,7 +103,7 @@ const page: React.FC<PageProps> = ({ params }) => {
             alt="selected image"
             width={425}
             height={450}
-            className="w-[475px] h-[350px] md:w-[425px] sm:h-[350px] md:h-[475px] border border-black/20 rounded-xl"
+            className="w-[475px] h-[350px] md:w-[425px] sm:h-[350px] md:h-[475px] rounded-xl"
           />
   </div>
 

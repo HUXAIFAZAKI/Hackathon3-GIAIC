@@ -38,9 +38,9 @@ const CartPage: React.FC = () => {
       <div className="pt-6 mx-auto w-[85vw] max-w-6xl ">
         <h1 className={`${integralCF.className} text-4xl font-bold mb-6`}>YOUR CART</h1>
         {cart.length === 0 ? (
-          <div className="text-center">
+          <div className="text-center min-h-[200px] flex flex-col items-center justify-center">
           <p className="text-lg text-gray-600 mb-4">Your cart is empty</p>
-          <a href="/products" className="bg-black text-white px-6 py-3 rounded-full text-lg hover:bg-gray-900">
+          <a href="/products" className="bg-black text-white w-fit mt-12 px-6 py-3 rounded-full text-lg hover:bg-white hover:text-black border border-black select-none">
             Shop Now
           </a>
         </div>
@@ -94,7 +94,6 @@ const CartPage: React.FC = () => {
                       </div>
                     </div>
                   </div>
-
               ))}
             </div>
 
